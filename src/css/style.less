@@ -18,13 +18,7 @@ header {
   .smallPadding;
   width: 100%;
   font-size: 2em;
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header > span::first-child {
-  flex: 1;
+  text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -52,25 +46,22 @@ article {
 }
 
 @media screen and (max-width: 640px) {
-  @headerHeight: 38px;
-  
   header {
-    height: @headerHeight;
     font-size: 1em;
   }
   
   nav {
     position: absolute;
-    top: @headerHeight - 1;
-    left: -100%;
+    bottom: 0;
+    right: -100%;
     transition: left ease-in-out 0.25s;
   }
 
   nav.displayed {
-    left: 0;
+    right: 0;
   }
 
-  header > a:before {
+  nav > a:before {
     content: "\2261";
   }
   
