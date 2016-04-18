@@ -46,22 +46,35 @@ article {
 }
 
 @media screen and (max-width: 640px) {
+  @toggleMenuHeight: 40px;
+  
   header {
     font-size: 1em;
   }
   
   nav {
     position: absolute;
-    bottom: 0;
-    right: -100%;
-    transition: left ease-in-out 0.25s;
+    bottom: -100%;
+    right: 0;
+    transition: bottom ease-in-out 0.25s;
   }
 
   nav.displayed {
+    bottom: @toggleMenuHeight;
+  }
+  
+  #toggleMenu {
+    .darkBox;
+    .smallPadding;
+    position: absolute;
+    bottom: 0;
     right: 0;
+    text-align: center;
+    width: @toggleMenuHeight;
+    height: @toggleMenuHeight;
   }
 
-  nav > a:before {
+  #toggleMenu:before {
     content: "\2261";
   }
   
