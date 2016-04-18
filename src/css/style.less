@@ -18,15 +18,16 @@ header {
   .smallPadding;
   width: 100%;
   font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > span {
+  flex-basis: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-header > div {
-  .txtcenter;
-  width: 100%;
-  display: inline-block;
 }
 
 nav > ul {
