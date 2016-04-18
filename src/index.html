@@ -36,11 +36,11 @@
 <link rel="stylesheet" href="css/style.min.css">
 <script type="text/javascript">
     function toggleNav() {
-        const navElement = document.getElementsByTagName('nav')[0];
-        if (navElement.className.indexOf('displayed') !== -1) {
-            navElement.className = navElement.className.replace('displayed', '');
+        const navClasses = document.getElementsByTagName('nav')[0].classList;
+        if (navClasses.contains('displayed')) {
+            navClasses.remove('displayed');
         } else {
-            navElement.className += ' displayed';
+            navClasses.add('displayed');
         }
     }
 </script>
