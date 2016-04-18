@@ -7,8 +7,7 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-header,
-footer {
+header {
   background-color: #3A3A3A;
   color: #F8F8F8;
   text-align: center;
@@ -20,9 +19,6 @@ footer {
 header {
   font-size: 2em;
   padding: 10px;
-}
-footer {
-  align-self: flex-end;
 }
 nav > ul {
   background-color: #3A3A3A;
@@ -63,7 +59,7 @@ article {
   nav > a {
     font-size: 2em;
   }
-  nav > a:before {
+  header > a:before {
     padding: 0.4em;
     content: "\2261";
   }
