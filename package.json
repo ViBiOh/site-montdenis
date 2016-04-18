@@ -4,9 +4,12 @@
   "description": "Site Pension et Elevage de Montdenis",
   "main": "dist/index.html",
   "scripts": {
-    "less": "./node_modules/.bin/lessc ./src/css/style.less > ./src/css/style.css",
-    "minify:css": "./node_modules/.bin/cleancss -o ./src/css/style.min.css ./src/css/style.css",
-    "build": "npm run less && npm run minify:css"
+    "clean": "rm -rf ./dist && mkdir -p ./dist/css",
+    "copy:index": "cp ./src/* ./dist/*",
+    "copy:style": "cp ./src/css/*.css ./dist/css/",
+    "copy": "npm run copy:index && npm run copy:style",
+    "style": "./node_modules/.bin/lessc ./src/css/style.less | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
+    "build": "npm run less && npm run copy && npm run style"
   },
   "repository": {
     "type": "git",
