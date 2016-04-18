@@ -8,7 +8,7 @@
     "copy:txt": "cp ./src/*.txt ./dist/",
     "copy:css": "cp ./src/css/normalize.min.css ./dist/css/",
     "copy": "npm run copy:txt && npm run copy:css",
-    "html": "./node_modules/.bin/html-minifier -o ./dist/index.html --collapse-boolean-attributes --collapse-whitespace --decode-entities --html-5 --minify-js=true --remove-comments --remove-optional-tags --sort-attributes --sort-class-name --use-short-doctype ./src/index.html",
+    "html": "./node_modules/.bin/html-minifier -o ./dist/index.html --collapse-boolean-attributes --collapse-whitespace --decode-entities --html-5 --minify-js=true --remove-attribute-quotes --remove-comments --remove-optional-tags --sort-attributes --sort-class-name --use-short-doctype ./src/index.html",
     "style": "./node_modules/.bin/lessc ./src/css/style.less | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
     "build": "npm run clean && npm run copy && npm run html && npm run style"
   },
