@@ -13,7 +13,7 @@ body {
   flex-wrap: wrap;
 }
 
-header, footer {
+header {
   .darkBox;
   .txtcenter;
   width: 100%;
@@ -25,10 +25,6 @@ header, footer {
 header {
   font-size: 2em;
   padding: 10px;
-}
-
-footer {
-  align-self: flex-end;
 }
 
 nav > ul {
@@ -58,7 +54,7 @@ article {
 @media screen and (max-width: 640px) {
   nav {
     position: absolute;
-    top: 0;
+    top: 2em;
     left: 0;
   }
 
@@ -70,11 +66,7 @@ article {
     left: 0;
   }
 
-  nav > a {
-    font-size: 2em;
-  }
-
-  nav > a:before {
+  header > a:before {
     padding: 0.4em;
     content: "\2261";
   }
