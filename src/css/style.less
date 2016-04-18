@@ -16,15 +16,12 @@ body {
 header {
   .darkBox;
   .txtcenter;
+  .smallPadding;
+  font-size: 2em;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-header {
-  font-size: 2em;
-  padding: 10px;
 }
 
 nav > ul {
@@ -38,7 +35,7 @@ ul {
 }
 
 ul li {
-  padding: 10px;
+  .smallPadding;
 }
 
 a, a:hover, a:visited, a:active, a:focus {
@@ -47,15 +44,23 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 article {
-  padding: 10px;
+  .smallPadding;
   flex-basis: 500px;
 }
 
 @media screen and (max-width: 640px) {
+  @hheaderHeight: 50px;
+  
+  header {
+    height: @hheaderHeight;
+    font-size: 1em;
+  }
+  
   nav {
     position: absolute;
-    top: 2em;
+    top: @hheaderHeight;
     left: -100%;
+    transition: left ease-in-out 0.25s;
   }
 
   nav.displayed {
@@ -63,9 +68,12 @@ article {
   }
 
   header > a:before {
-    padding: 0.4em;
     content: "\2261";
   }
+}
+
+.smallPadding {
+  padding: 10px;
 }
 
 .darkBox {
