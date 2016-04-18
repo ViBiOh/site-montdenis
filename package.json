@@ -5,14 +5,14 @@
   "main": "dist/index.html",
   "scripts": {
     "less": "./node_modules/.bin/lessc ./src/css/style.less > ./src/css/style.css",
-    "build": "npm run less"
+    "minify:css": "./node_modules/.bin/cleancss -o ./src/css/style.min.css ./src/css/style.css",
+    "build": "npm run less && npm run minify:css"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/ViBiOh/site-montdenis.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Vincent Boutour",
   "license": "ISC",
   "bugs": {
@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
-    "less": "latest"
+    "less": "latest",
+    "clean-css": "latest"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
