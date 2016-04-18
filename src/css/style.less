@@ -53,11 +53,15 @@ article {
   nav {
     position: absolute;
     bottom: 0;
+    right: 0;
+  }
+  
+  nav > ul {
     right: -100%;
     transition: left ease-in-out 0.25s;
   }
 
-  nav.displayed {
+  nav.displayed > ul {
     right: 0;
   }
 
