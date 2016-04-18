@@ -55,12 +55,13 @@ article {
   nav {
     position: absolute;
     bottom: -100%;
-    right: 0;
+    right: @toggleMenuHeight;
+    opacity: 0;
     transition: bottom ease-in-out 0.25s;
   }
 
   nav.displayed {
-    bottom: @toggleMenuHeight;
+    opacity: 1;
   }
   
   #toggleMenu {
