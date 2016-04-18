@@ -1,18 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="fr">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Elevage et Pension de Montdenis</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
     </head>
     <body>
-        <header>
-            <h1 class="title">Elevage et Pension de Montdenis</h1>
-        </header>
+        <header>Elevage et Pension de Montdenis</header>
         <nav>
+            <a onclick="toggleNav()"></a>
             <ul>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/elevage/">Elevage</a></li>
@@ -21,18 +19,26 @@
                 <li><a href="/galerie/">Galerie</a></li>
             </ul>
         </nav>
-
         <article>
             <section>
                 <h2>article section h2</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
             </section>
         </article>
-
-        <footer class="wrapper">
+        <footer>
             <p>&copy; Vincent Boutour 2016</p>
         </footer>
     </body>
 </html>
 <link rel="stylesheet" href="css/normalize.min.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript">
+    function toggleNav() {
+        const navElement = document.getElementsByTagName('ul')[0];
+        if (navElement.className.indexOf('displayedNav') !== -1) {
+            navElement.className = navElement.className.replace('displayedNav', '');
+        } else {
+            navElement.className += ' displayedNav';
+        }
+    }
+</script>

@@ -1,0 +1,27 @@
+{
+  "name": "site-montdenis",
+  "version": "0.0.1",
+  "description": "Site Pension et Elevage de Montdenis",
+  "main": "dist/index.html",
+  "scripts": {
+    "less": "./node_modules/.bin/lessc ./src/css/style.less > ./src/css/style.css",
+    "build": "npm run less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ViBiOh/site-montdenis.git"
+  },
+  "keywords": [
+  ],
+  "author": "Vincent Boutour",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViBiOh/site-montdenis/issues"
+  },
+  "homepage": "https://github.com/ViBiOh/site-montdenis",
+  "devDependencies": {
+    "less": "latest"
+  },
+  "dependencies": {
+  }
+}
