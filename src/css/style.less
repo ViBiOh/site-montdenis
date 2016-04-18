@@ -24,7 +24,7 @@ header {
 }
 
 header > span::first-child {
-  flex-basis: 200px;
+  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -32,9 +32,6 @@ header > span::first-child {
 
 nav > ul {
   .darkBox;
-}
-
-ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -89,8 +86,4 @@ article {
 .darkBox {
   background-color: @dark;
   color: @clear;
-}
-
-.txtcenter {
-  text-align: center;
 }
