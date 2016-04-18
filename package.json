@@ -10,7 +10,7 @@
     "copy": "npm run copy:txt && npm run copy:css",
     "html": "./node_modules/.bin/html-minifier -o ./dist/index.html ./src/index.html",
     "style": "./node_modules/.bin/lessc ./src/css/style.less | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
-    "build": "npm run clean && npm run copy && npm run style"
+    "build": "npm run clean && npm run copy && npm run html && npm run style"
   },
   "repository": {
     "type": "git",
