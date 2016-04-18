@@ -49,16 +49,16 @@ article {
 }
 
 @media screen and (max-width: 640px) {
-  @hheaderHeight: 50px;
+  @headerHeight: 50px;
   
   header {
-    height: @hheaderHeight;
-    font-size: 1em;
+    height: @headerHeight;
+    font-size: 30px;
   }
   
   nav {
     position: absolute;
-    top: @hheaderHeight;
+    top: @headerHeight;
     left: -100%;
     transition: left ease-in-out 0.25s;
   }
@@ -69,6 +69,10 @@ article {
 
   header > a:before {
     content: "\2261";
+  }
+  
+  header > a:after {
+    content: "\00A0";
   }
 }
 
