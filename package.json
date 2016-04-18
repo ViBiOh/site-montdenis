@@ -5,7 +5,7 @@
   "main": "dist/index.html",
   "scripts": {
     "clean": "rm -rf ./dist && mkdir -p ./dist/css",
-    "copy:index": "find ./src -type f | grep -v "./src/css" | xargs -0 -I {} cp -a {} ./dist",
+    "copy:index": "find ./src -type f | grep -v './src/css' | xargs -0 -I {} cp -a {} ./dist",
     "copy:style": "cp ./src/css/*.css ./dist/css/",
     "copy": "npm run copy:index && npm run copy:style",
     "style": "./node_modules/.bin/lessc ./src/css/style.less | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
