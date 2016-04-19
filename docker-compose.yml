@@ -2,7 +2,7 @@ montdenis:
   image: vibioh/http
   labels:
     traefik.frontend.passHostHeader: 'true'
-    traefik.frontend.rule: 'Host:{subdomain:montdenis\-test|static\.montdenis}.${DOMAIN}'
+    traefik.frontend.rule: 'HostRegexp:{subdomain:montdenis\-test|static\.montdenis}.${DOMAIN}'
     traefik.port: '1080'
   volumes:
   - ${WWW_DIR}:/www
