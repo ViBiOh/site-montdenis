@@ -7,8 +7,7 @@
     "clean": "rm -rf ./dist && mkdir -p ./dist/css",
     "robots": "cp ./src/*.txt ./dist/",
     "html": "./node_modules/.bin/html-minifier -o ./dist/index.html --collapse-boolean-attributes --collapse-whitespace --decode-entities --html-5 --minify-js=true --remove-attribute-quotes --remove-comments --remove-optional-tags --sort-attributes --sort-class-name --use-short-doctype ./src/index.html",
-    "less": "./node_modules/.bin/lessc ./src/css/style.less style.css",
-    "style": "npm run less && cat ./node_modules/normalize.css/normalize.css style.css | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
+    "style": "./node_modules/.bin/lessc ./src/css/style.less style.css && cat ./node_modules/normalize.css/normalize.css style.css | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css && rm -f style.css",
     "build": "npm run clean && npm run robots && npm run html && npm run style"
   },
   "repository": {
