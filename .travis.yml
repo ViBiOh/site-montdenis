@@ -1,8 +1,10 @@
 language: node_js
+sudo: required
 node_js:
 - 5.10.1
 script:
-- npm install
-- npm run build
+- make
+- docker login -e ${DOCKER_EMAIL} -u ${DOCKER_USER} -p ${DOCKER_PASS}
+- docker push vibioh/site-montdenis
 notifications:
   email: false
