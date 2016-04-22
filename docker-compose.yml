@@ -1,11 +1,9 @@
 montdenis:
-  image: vibioh/http
+  image: vibioh/site-montdenis
   labels:
     traefik.frontend.passHostHeader: 'true'
-    traefik.frontend.rule: 'Host: montdenis-test.${DOMAIN}'
+    traefik.frontend.rule: 'Host: montdenis.${DOMAIN}'
     traefik.port: '1080'
-  volumes:
-  - ${WWW_DIR}:/www
   log_opt:
     max-size: '50m'
   restart: 'no'
