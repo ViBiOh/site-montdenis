@@ -14,3 +14,7 @@ services:
     restart: 'no'
     read_only: true
 
+networks:
+  default:
+    external:
+      name: traefik
