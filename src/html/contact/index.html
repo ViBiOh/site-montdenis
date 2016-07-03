@@ -66,23 +66,24 @@
 <link rel="stylesheet" href="/css/style.min.css">
 <script type="text/javascript">
     var toggleLink = document.getElementById('toggleMenu');
+    var navElement = document.getElementsByTagName('nav')[0];
 
-    function toggleNav(forceHide) {
-        const navClasses = document.getElementsByTagName('nav')[0].classList;
-        if (forceHide || navClasses.contains('displayed')) {
-            navClasses.remove('displayed');
+    function handleNav(show) {
+        const navClasses = navElement.classList;
+        if (show) {
+            if (!navClasses.contains('displayed')) {
+                navClasses.add('displayed');
+            }
         } else {
-            navClasses.add('displayed');
+            navClasses.remove('displayed');
         }
     }
 
     function handleClick(event) {
-        console.log('coucou');
-      if (toggleLink.contains(event.target)) {
-        toggleNav();
-      } else {
-        toggleNav(true);
-      }
+        if (navElement.contains(event.target)) {
+            return;
+        }
+        handleNav(toggleLink.contains(event.target));
     }
 
     document.addEventListener('click', handleClick);
