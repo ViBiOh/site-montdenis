@@ -52,14 +52,24 @@
                 <img src="/img/haflinger.jpg" alt="haflinger dans les prés" width="80%">
             </section>
         </article>
-        <a id="toggleMenu" onclick="toggleNav()"></a>
+        <a id="toggleMenu"></a>
     </body>
 </html>
 <link rel="stylesheet" href="/css/style.min.css">
 <script type="text/javascript">
-    function toggleNav() {
+    var toggleLink = document.getElementById('toggleMenu');
+
+    document.addEventListener('click', function(event) {
+      if (toggleLink.contains(event.target)) {
+        toggleNav();
+      } else {
+        toggleNav(true);
+      }
+    });
+
+    function toggleNav(forceHide) {
         const navClasses = document.getElementsByTagName('nav')[0].classList;
-        if (navClasses.contains('displayed')) {
+        if (forceHide || navClasses.contains('displayed')) {
             navClasses.remove('displayed');
         } else {
             navClasses.add('displayed');
