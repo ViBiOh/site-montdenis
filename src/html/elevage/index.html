@@ -61,14 +61,6 @@
 <script type="text/javascript">
     var toggleLink = document.getElementById('toggleMenu');
 
-    document.addEventListener('click', function(event) {
-      if (toggleLink.contains(event.target)) {
-        toggleNav();
-      } else {
-        toggleNav(true);
-      }
-    });
-
     function toggleNav(forceHide) {
         const navClasses = document.getElementsByTagName('nav')[0].classList;
         if (forceHide || navClasses.contains('displayed')) {
@@ -77,4 +69,16 @@
             navClasses.add('displayed');
         }
     }
+
+    function handleClick(event) {
+        console.log('coucou');
+      if (toggleLink.contains(event.target)) {
+        toggleNav();
+      } else {
+        toggleNav(true);
+      }
+    }
+
+    document.addEventListener('click', handleClick);
+    document.addEventListener('touchstart', handleClick);
 </script>
