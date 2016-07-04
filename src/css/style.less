@@ -57,13 +57,12 @@ article {
     .smallPadding;
   }
 
-  #pension {
+  .bgImg {
     position: relative;
   }
 
-  #pension::after {
+  .bgImg::after {
     content: "";
-    background-image: url('/img/haflinger.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -74,6 +73,14 @@ article {
     bottom: 0;
     right: 0;
     z-index: -1;
+  }
+
+  #pension::after {
+    background-image: url('/img/haflinger.jpg');
+  }
+
+  #contact::after {
+    background-image: url('/img/biscotte.jpg');
   }
 }
 
@@ -100,7 +107,7 @@ article {
     .smallPadding;
   }
 
-  img {
+  img, iframe {
     width: 100%;
   }
   
