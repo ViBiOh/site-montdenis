@@ -61,28 +61,4 @@
     </body>
 </html>
 <link rel="stylesheet" href="/css/style.min.css">
-<script type="text/javascript">
-    var toggleLink = document.getElementById('toggleMenu');
-    var navElement = document.getElementsByTagName('nav')[0];
-
-    function handleNav(show) {
-        const navClasses = navElement.classList;
-        if (show) {
-            if (!navClasses.contains('displayed')) {
-                navClasses.add('displayed');
-            }
-        } else {
-            navClasses.remove('displayed');
-        }
-    }
-
-    function handleClick(event) {
-        if (navElement.contains(event.target)) {
-            return;
-        }
-        handleNav(toggleLink.contains(event.target));
-    }
-
-    document.addEventListener('click', handleClick);
-    document.addEventListener('touchstart', handleClick);
-</script>
+<script async="true" type="text/javascript" src="/js/nav.js"></script>
