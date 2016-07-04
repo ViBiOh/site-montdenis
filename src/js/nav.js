@@ -12,7 +12,6 @@ function handleClick(event) {
   if (navElement.contains(event.target)) {
       return;
   }
-  event.preventDefault();
   handleNav(!toggleLink.contains(event.target));
 }
 document.addEventListener('click', handleClick);
