@@ -5,7 +5,7 @@ services:
     image: vibioh/site-montdenis
     labels:
       traefik.frontend.passHostHeader: 'true'
-      traefik.frontend.rule: 'Host: montdenis.${DOMAIN}'
+      traefik.frontend.rule: 'Host: ${DOMAIN}'
       traefik.port: '1080'
     logging:
       driver: json-file
