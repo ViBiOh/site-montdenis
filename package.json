@@ -6,9 +6,10 @@
   "scripts": {
     "clean": "rm -rf ./dist && mkdir -p ./dist/css && mkdir -p ./dist/js && mkdir -p ./dist/img",
     "copy:txt": "cp ./src/*.txt ./dist/",
+    "copy:xml": "cp ./src/*.xml ./dist/",
     "copy:favicon": "cp ./src/favicon/* ./dist/",
     "copy:img": "cp ./src/img/* ./dist/img/",
-    "copy": "npm run copy:txt && npm run copy:favicon && npm run copy:img",
+    "copy": "npm run copy:txt && npm run copy:xml && npm run copy:favicon && npm run copy:img",
     "html": "./node_modules/.bin/html-minifier --config-file ./html-minifier.json --input-dir ./src/html --output-dir ./dist",
     "js": "cat ./src/js/nav.js ./src/js/googleAnalytics.js | ./node_modules/.bin/uglifyjs -o ./dist/js/index.js -c -mt --preamble //${npm_package_name}@${npm_package_version}",
     "style": "./node_modules/.bin/lessc ./src/css/style.less | cat ./node_modules/normalize.css/normalize.css - | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
