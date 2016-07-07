@@ -106,6 +106,17 @@ address {
   h1 {
     font-size: 1em;
   }
+  
+  nav {
+    position: fixed;
+    bottom: @toggleMenuHeight;
+    right: 0;
+    display: none;
+  }
+
+  nav.displayed {
+    display: block;
+  }
 
   article {
     flex-basis: auto;
@@ -130,17 +141,6 @@ address {
   #toggleMenu:before {
     font-size: 2em;
     content: "\2261";
-  }
-  
-  #navMenu {
-    position: fixed;
-    bottom: @toggleMenuHeight;
-    right: 0;
-    display: none;
-  }
-
-  #navMenu:target {
-    display: block;
   }
 }
 
