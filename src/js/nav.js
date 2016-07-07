@@ -1,12 +1,12 @@
 var toggleLink = document.getElementById('toggleMenu');
 var navElement = document.getElementsByTagName('nav')[0];
 
-function handleNav(show) {
+function handleNav(target) {
   const navClasses = navElement.classList;
-  if (show) {
-    navClasses.add('displayed');
-  } else {
+  if (!target || navClasses.contains('displayed')) {
     navClasses.remove('displayed');
+  } else {
+    navClasses.add('displayed');
   }
 }
 
@@ -17,5 +17,4 @@ function handleClick(event) {
   handleNav(toggleLink.contains(event.target));
 }
 
-document.addEventListener('click', handleClick);
 document.addEventListener('touchstart', handleClick);
