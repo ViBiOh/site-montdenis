@@ -33,8 +33,8 @@
         <meta name="msapplication-TileImage" content="/mstile-144x144.png">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body itemscope itemtype="http://schema.org/LocalBusiness">
-        <header><h1 itemprop="name">Elevage et Pension de Montdenis</h1></header>
+    <body>
+        <header><h1>Elevage et Pension de Montdenis</h1></header>
         <nav>
             <ul>
                 <li><a href="/">Accueil</a></li>
@@ -47,12 +47,12 @@
         <article>
             <section class="bgImg" id="contact">
                 <h2>Contact</h2>
-                <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <address>
                     <p>
                     Corinne &amp; Denis Boutour<br>
-                    <span itemprop="streetAddress">Ferme de Montdenis</span><br>
-                    <span itemprop="postalCode">77580</span>&nbsp;<span itemprop="addressLocality">Sancy-les-Meaux</span><br>
-                    ☎ : <a href="tel:+33164637136"><span itemprop="telephone">01 64 63 71 36</span></a><br>
+                    Ferme de Montdenis<br>
+                    77580 Sancy-les-Meaux<br>
+                    ☎ : <a href="tel:+33164637136">01 64 63 71 36</a><br>
                     <a id="mail" href="mailto:corinne.boutour@gmail.com">Nous contacter</a>
                     </p>
                 </adress>
@@ -60,6 +60,16 @@
             </section>
         </article>
         <span id="toggleMenu"></span>
+        <span style="display: none;" itemscope itemtype="http://schema.org/LocalBusiness">
+           <span itemprop="name">Elevage et Pension de chevaux Montdenis</span>
+           <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+             <span itemprop="streetAddress">Ferme de Montdenis</span>
+             <span itemprop="addressLocality">Sancy-les-Meaux</span>,
+             <span itemprop="addressRegion">France</span>
+             <span itemprop="postalCode">77580</span>
+           </span>
+           Phone: <span itemprop="telephone">+33164637136</span>
+        </span>
     </body>
 </html>
 <link rel="stylesheet" href="/css/style.min.css">
