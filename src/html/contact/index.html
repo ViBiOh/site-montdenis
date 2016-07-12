@@ -1,10 +1,7 @@
 <!doctype html>
-<html class="no-js" lang="fr">
+<html lang="fr">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta http-equiv="content-language" content="fr">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{> head.html}}
         <title>Contact Elevage et Pension de chevaux Montdenis</title>
         <meta name="twitter:title" content="Contact Elevage et Pension de chevaux Montdenis">
         <meta property="og:title" content="Contact Elevage et Pension de chevaux Montdenis">
@@ -16,42 +13,10 @@
         <meta property="og:url" content="https://pension-montdenis.fr/contact/">
         <meta name="twitter:image" content="https://pension-montdenis.fr/img/biscotte.jpg">
         <meta property="og:image" content="https://pension-montdenis.fr/img/biscotte.jpg">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:creator" content="@ViBiOh">
-        <meta property="og:type" content="website">
-        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
-        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="/manifest.json">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="apple-mobile-web-app-title" content="Montdenis">
-        <meta name="application-name" content="Montdenis">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-        <meta name="theme-color" content="#ffffff">
     </head>
     <body>
         <header><h1>Elevage et Pension de chevaux Montdenis</h1></header>
-        <nav>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/elevage/">Elevage</a></li>
-                <li><a href="/contact/">Contact</a></li>
-                <hr />
-                <li>Montdenis &copy; 2016</li>
-            </ul>
-        </nav>
+        {{> nav.html}}
         <article>
             <section class="bgImg" id="contact">
                 <h2>Contact</h2>
@@ -67,18 +32,8 @@
                 <iframe src="https://embed.waze.com/iframe?zoom=16&lat=48.86753&lon=2.95637" width="400" height="400"></iframe>
             </section>
         </article>
-        <span id="toggleMenu"></span>
-        <span class="microdata" itemscope itemtype="http://schema.org/LocalBusiness">
-           <span itemprop="name">Elevage et Pension de chevaux Montdenis</span>
-           <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-             <span itemprop="streetAddress">Ferme de Montdenis</span>
-             <span itemprop="addressLocality">Sancy-les-Meaux</span>
-             <span itemprop="addressRegion">France</span>
-             <span itemprop="postalCode">77580</span>
-           </span>
-           Phone: <span itemprop="telephone">+33164637136</span>
-        </span>
+        {{> toggle.html}}
+        {{> microdata.html}}
     </body>
 </html>
-<link rel="stylesheet" href="/css/style.min.css">
-<script async="true" type="text/javascript" src="/js/index.js"></script>
+{{> footer.html}}

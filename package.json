@@ -1,6 +1,6 @@
 {
   "name": "site-montdenis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Site Pension et Elevage de Montdenis",
   "main": "dist/index.html",
   "scripts": {
@@ -10,7 +10,13 @@
     "copy:favicon": "cp ./src/favicon/* ./dist/",
     "copy:img": "cp ./src/img/* ./dist/img/",
     "copy": "npm run copy:txt && npm run copy:xml && npm run copy:favicon && npm run copy:img",
-    "html": "./node_modules/.bin/html-minifier --config-file ./html-minifier.json --input-dir ./src/html --output-dir ./dist",
+    "html-init": "mkdir -p ./tmp/contact && mkdir -p ./tmp/elevage",
+    "mustache-index": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/nav.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/footer.html mustache.json ./src/html/index.html > ./tmp/index.html",
+    "mustache-elevage": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/nav.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/footer.html mustache.json ./src/html/elevage/index.html > ./tmp/elevage/index.html",
+    "mustache-contact": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/nav.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/footer.html mustache.json ./src/html/contact/index.html > ./tmp/contact/index.html",
+    "mustache": "npm run mustache-index && npm run mustache-elevage && npm run mustache-contact",
+    "html-minify": "./node_modules/.bin/html-minifier --config-file ./html-minifier.json --input-dir ./tmp --output-dir ./dist",
+    "html": "npm run html-init && npm run mustache && npm run html-minify",
     "js": "cat ./src/js/nav.js ./src/js/googleAnalytics.js | ./node_modules/.bin/uglifyjs -o ./dist/js/index.js -c -mt --preamble //${npm_package_name}@${npm_package_version}",
     "style": "./node_modules/.bin/lessc ./src/css/style.less | cat ./node_modules/normalize.css/normalize.css - | ./node_modules/.bin/cleancss -o ./dist/css/style.min.css",
     "build": "npm run clean && npm run copy && npm run html && npm run js && npm run style"
@@ -29,9 +35,10 @@
   "devDependencies": {
     "clean-css": "latest",
     "html-minifier": "latest",
-    "uglify-js": "latest",
     "less": "latest",
-    "normalize.css": "latest"
+    "mustache": "latest",
+    "normalize.css": "latest",
+    "uglify-js": "latest"
   },
   "dependencies": {}
 }
