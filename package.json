@@ -6,10 +6,11 @@
   "scripts": {
     "clean": "rm -rf ./dist && mkdir -p ./dist/css && mkdir -p ./dist/js && mkdir -p ./dist/img",
     "copy:txt": "cp ./src/*.txt ./dist/",
+    "copy:html": "cp ./src/*.html ./dist/",
     "copy:xml": "cp ./src/*.xml ./dist/",
     "copy:favicon": "cp ./src/favicon/* ./dist/",
     "copy:img": "cp ./src/img/* ./dist/img/",
-    "copy": "npm run copy:txt && npm run copy:xml && npm run copy:favicon && npm run copy:img",
+    "copy": "npm run copy:txt && npm run copy:html && npm run copy:xml && npm run copy:favicon && npm run copy:img",
     "html-init": "mkdir -p ./tmp/contact && mkdir -p ./tmp/elevage",
     "mustache-index": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/favicon.html -p ./src/html/partials/nav.html -p ./src/html/partials/seo.html -p ./src/html/partials/twitter_card.html -p ./src/html/partials/opengraph.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/header.html -p ./src/html/partials/footer.html ./src/html/mustache.json ./src/html/index.html > ./tmp/index.html",
     "mustache-elevage": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/favicon.html -p ./src/html/partials/nav.html -p ./src/html/partials/seo.html -p ./src/html/partials/twitter_card.html -p ./src/html/partials/opengraph.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/header.html -p ./src/html/partials/footer.html ./src/html/elevage/mustache.json ./src/html/elevage/index.html > ./tmp/elevage/index.html",
