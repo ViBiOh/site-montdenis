@@ -1,6 +1,6 @@
 {
   "name": "site-montdenis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Site Pension et Elevage de Montdenis",
   "main": "dist/index.html",
   "scripts": {
@@ -12,9 +12,9 @@
     "copy:img": "cp ./src/img/* ./dist/img/",
     "copy": "npm run copy:txt && npm run copy:html && npm run copy:xml && npm run copy:favicon && npm run copy:img",
     "html-init": "mkdir -p ./tmp/contact && mkdir -p ./tmp/elevage",
-    "mustache-index": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/favicon.html -p ./src/html/partials/nav.html -p ./src/html/partials/seo.html -p ./src/html/partials/twitter_card.html -p ./src/html/partials/opengraph.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/header.html -p ./src/html/partials/footer.html ./src/html/mustache.json ./src/html/index.html > ./tmp/index.html",
-    "mustache-elevage": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/favicon.html -p ./src/html/partials/nav.html -p ./src/html/partials/seo.html -p ./src/html/partials/twitter_card.html -p ./src/html/partials/opengraph.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/header.html -p ./src/html/partials/footer.html ./src/html/elevage/mustache.json ./src/html/elevage/index.html > ./tmp/elevage/index.html",
-    "mustache-contact": "./node_modules/.bin/mustache -p ./src/html/partials/head.html -p ./src/html/partials/favicon.html -p ./src/html/partials/nav.html -p ./src/html/partials/seo.html -p ./src/html/partials/twitter_card.html -p ./src/html/partials/opengraph.html -p ./src/html/partials/toggle.html -p ./src/html/partials/microdata.html -p ./src/html/partials/header.html -p ./src/html/partials/footer.html ./src/html/contact/mustache.json ./src/html/contact/index.html > ./tmp/contact/index.html",
+    "mustache-index": "./node_modules/.bin/mustache -p ./src/partials/head.html -p ./src/partials/favicon.html -p ./src/partials/nav.html -p ./src/partials/seo.html -p ./src/partials/twitter_card.html -p ./src/partials/opengraph.html -p ./src/partials/toggle.html -p ./src/partials/microdata.html -p ./src/partials/header.html -p ./src/partials/footer.html ./src/html/mustache.json ./src/html/index.html > ./tmp/index.html",
+    "mustache-elevage": "./node_modules/.bin/mustache -p ./src/partials/head.html -p ./src/partials/favicon.html -p ./src/partials/nav.html -p ./src/partials/seo.html -p ./src/partials/twitter_card.html -p ./src/partials/opengraph.html -p ./src/partials/toggle.html -p ./src/partials/microdata.html -p ./src/partials/header.html -p ./src/partials/footer.html ./src/html/elevage/mustache.json ./src/html/elevage/index.html > ./tmp/elevage/index.html",
+    "mustache-contact": "./node_modules/.bin/mustache -p ./src/partials/head.html -p ./src/partials/favicon.html -p ./src/partials/nav.html -p ./src/partials/seo.html -p ./src/partials/twitter_card.html -p ./src/partials/opengraph.html -p ./src/partials/toggle.html -p ./src/partials/microdata.html -p ./src/partials/header.html -p ./src/partials/footer.html ./src/html/contact/mustache.json ./src/html/contact/index.html > ./tmp/contact/index.html",
     "mustache": "npm run mustache-index && npm run mustache-elevage && npm run mustache-contact",
     "html-minify": "./node_modules/.bin/html-minifier --config-file ./html-minifier.json --input-dir ./tmp --output-dir ./dist",
     "html": "npm run html-init && npm run mustache && npm run html-minify",
