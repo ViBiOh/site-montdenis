@@ -1,0 +1,12 @@
+<script type="text/javascript">
+  var {{{name}}} = new Image();
+  {{{name}}}.onload = function () {
+    document.getElementsByTagName('{{{container}}}')[0].appendChild({{{name}}});
+  };
+  {{{name}}}.src = '{{{url}}}';
+  {{{name}}}.alt = '{{alt}}';
+  {{{name}}}.style.width = '{{width}}';
+</script>
+<noscript>
+<img src="{{{url}}}" width="{{width}}" alt="{{alt}}">
+</noscript>

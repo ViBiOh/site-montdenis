@@ -17,9 +17,9 @@
     <h2>Installations</h2>
     <p>Carrière 20m x 40, carrière d'attelage en herbe 40m x 80, bloc sanitaires et salle mise à disposition.</p>
   </section>
-  <img src="/img/haflinger.jpg" width="90%" alt="haflinger dans les prés">
-  <img src="/img/pres.jpg" width="90%" alt="prés et clotures">
-  <img src="/img/carriere.jpg" width="90%" alt="carriere de travail">
+  {{#images}}
+    {{> asyncImage.html}}
+  {{/images}}
 </article>
 {{> toggle.html}}
 {{> microdata.html}}

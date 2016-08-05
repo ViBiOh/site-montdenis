@@ -2,5 +2,26 @@
   "title": "Elevage et Pension de chevaux Montdenis",
   "description": "Elevage et Pension de chevaux en Seine et Marne, à Sancy-les-Meaux, à 40 km de Paris. Cadre naturel propice aux ballades. Ambiance familiale et loisir.",
   "url": "https://pension-montdenis.fr",
-  "img": "https://pension-montdenis.fr/img/haflinger.jpg"
+  "img": "https://pension-montdenis.fr/img/haflinger.jpg",
+  "images": [
+    {
+      "name": "haflinger",
+      "url": "/img/haflinger.jpg",
+      "width": "90%",
+      "alt": "haflinger dans les prés",
+      "container": "article"
+    }, {
+      "name": "pres",
+      "url": "/img/pres.jpg",
+      "width": "90%",
+      "alt": "prés et clotures",
+      "container": "article"
+    }, {
+      "name": "carriere",
+      "url": "/img/carriere.jpg",
+      "width": "90%",
+      "alt": "carriere de travail",
+      "container": "article"
+    }
+  ]
 }
