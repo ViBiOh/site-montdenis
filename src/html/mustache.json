@@ -8,20 +8,22 @@
       "name": "haflinger",
       "url": "/img/haflinger.jpg",
       "width": "90%",
-      "alt": "haflinger dans les prés",
-      "container": "article"
+      "alt": "haflinger dans les prés"
+    }, {
+      "name": "ballade",
+      "url": "/img/ballade.jpg",
+      "width": "90%",
+      "alt": "chemins de ballade"
     }, {
       "name": "pres",
       "url": "/img/pres.jpg",
       "width": "90%",
-      "alt": "prés et clotures",
-      "container": "article"
+      "alt": "prés et clotures"
     }, {
       "name": "carriere",
       "url": "/img/carriere.jpg",
       "width": "90%",
-      "alt": "carriere de travail",
-      "container": "article"
+      "alt": "carriere de travail"
     }
   ]
 }

@@ -1,12 +1,14 @@
+<span id="{{{name}}}">
+  <noscript>
+    <img src="{{{url}}}" width="{{width}}" alt="{{alt}}" class="{{class}}">
+  </noscript>
+</span>
 <script type="text/javascript">
   var {{{name}}} = new Image();
   {{{name}}}.onload = function () {
-    document.getElementsByTagName('{{{container}}}')[0].appendChild({{{name}}});
+    document.getElementById('{{{name}}}').appendChild({{{name}}});
   };
   {{{name}}}.src = '{{{url}}}';
   {{{name}}}.alt = '{{alt}}';
   {{{name}}}.setAttribute('class', '{{class}}');
 </script>
-<noscript>
-<img src="{{{url}}}" class="{{class}}" width="{{width}}" alt="{{alt}}">
-</noscript>
