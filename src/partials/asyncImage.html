@@ -1,12 +1,10 @@
-<span id="{{{name}}}">
-  <noscript>
-    <img src="{{{url}}}" width="{{width}}" alt="{{alt}}" class="{{class}}">
-  </noscript>
-</span>
+<noscript>
+  <img src="{{{url}}}" width="{{width}}" alt="{{alt}}" class="{{class}}">
+</noscript>
 <script type="text/javascript">
   var {{{name}}} = new Image();
   {{{name}}}.onload = function () {
-    document.getElementById('{{{name}}}').appendChild({{{name}}});
+    document.getElementById('{{{container}}}').appendChild({{{name}}});
   };
   {{{name}}}.src = '{{{url}}}';
   {{{name}}}.alt = '{{alt}}';

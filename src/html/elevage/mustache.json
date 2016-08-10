@@ -8,25 +8,26 @@
       "name": "brume",
       "url": "/img/brume.jpg",
       "alt": "poulain fjord",
-      "class": "half"
-    },
-    {
+      "class": "half",
+      "container": "images"
+    }, {
       "name": "DSC02431",
       "url": "/img/DSC02431.jpg",
       "alt": "gros plan poulain",
-      "class": "half"
-    },
-    {
+      "class": "half",
+      "container": "images"
+    }, {
       "name": "poulains",
       "url": "/img/poulains.jpg",
       "alt": "poulains dormant dans les prés",
-      "class": "half"
-    },
-    {
+      "class": "half",
+      "container": "images"
+    },  {
       "name": "poulains_2",
       "url": "/img/poulains_2.jpg",
       "alt": "poulains dans les prés",
-      "class": "half"
+      "class": "half",
+      "container": "images"
     }
   ]
 }
