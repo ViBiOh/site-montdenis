@@ -1,12 +1,13 @@
 <noscript>
-  <img src="{{{url}}}" width="{{width}}" alt="{{alt}}" class="{{class}}">
+  <img src="{{{url}}}.jpg" width="{{width}}" alt="{{alt}}" class="{{class}}" srcset="{{{url}}}.jpg, {{{url}}}-640.jpg 640w">
 </noscript>
 <script type="text/javascript">
   var {{{name}}} = new Image();
   {{{name}}}.onload = function () {
     document.getElementById('{{{container}}}').appendChild({{{name}}});
   };
-  {{{name}}}.src = '{{{url}}}';
+  {{{name}}}.srcset = '{{{url}}}.jpg, {{{url}}}-640.jpg 640w';
+  {{{name}}}.src = '{{{url}}}.jpg';
   {{{name}}}.alt = '{{alt}}';
   {{{name}}}.setAttribute('class', '{{class}}');
 </script>
