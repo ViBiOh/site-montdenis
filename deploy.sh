@@ -20,6 +20,8 @@ readVariableIfRequired "DOMAIN"
 PROJECT_NAME=${2}
 readVariableIfRequired "PROJECT_NAME"
 
+export DOMAIN=${DOMAIN}
+
 docker-compose -p ${PROJECT_NAME} pull
 docker-compose -p ${PROJECT_NAME} up -d --force-recreate
 
