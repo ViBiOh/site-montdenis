@@ -10,6 +10,11 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://pension-montdenis.fr/installations/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://pension-montdenis.fr/elevage/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
