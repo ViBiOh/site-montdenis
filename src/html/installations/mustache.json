@@ -1,0 +1,33 @@
+{
+  "title": "Elevage de chevaux Haflinger et Fjord Montdenis",
+  "description": "Elevage de Haflinger et Fjord en Seine et Marne, à Sancy-les-Meaux, à 40 km de Paris. Poulains nés à la ferme, éduqués à la monte ou attelage.",
+  "url": "https://pension-montdenis.fr/elevage/",
+  "img": "https://pension-montdenis.fr/img/brume.jpg",
+  "images": [
+    {
+      "name": "pres",
+      "url": "/img/pres",
+      "alt": "pres",
+      "class": "half",
+      "container": "images"
+    }, {
+      "name": "carriere",
+      "url": "/img/carriere",
+      "alt": "carriere",
+      "class": "half",
+      "container": "images"
+    }, {
+      "name": "halfinger_fjord",
+      "url": "/img/halfinger_fjord",
+      "alt": "halfinger et fjord",
+      "class": "half",
+      "container": "images"
+    }, {
+      "name": "ballade",
+      "url": "/img/ballade",
+      "class": "half",
+      "alt": "chemins de ballade",
+      "container": "images"
+    }
+  ]
+}
