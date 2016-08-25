@@ -20,6 +20,7 @@
       "name": "ballade",
       "url": "/img/ballade",
       "alt": "chemins de ballade",
+      "class": "half",
       "container": "images"
     }
   ]
