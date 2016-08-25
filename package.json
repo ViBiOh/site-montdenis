@@ -42,7 +42,7 @@
     "mustache": "latest",
     "normalize.css": "latest",
     "uglify-js": "latest",
-    "yargs": "yargs"
+    "yargs": "5.0.0"
   },
   "dependencies": {}
 }
