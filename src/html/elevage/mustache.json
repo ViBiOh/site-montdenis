@@ -8,6 +8,7 @@
       "name": "halfinger_fjord",
       "url": "/img/halfinger_fjord",
       "alt": "halfinger et fjord",
+      "class": "half",
       "container": "images"
     }, {
       "name": "brume",
