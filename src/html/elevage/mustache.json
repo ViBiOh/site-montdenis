@@ -5,6 +5,11 @@
   "img": "https://pension-montdenis.fr/img/brume.jpg",
   "images": [
     {
+      "name": "halfinger_fjord",
+      "url": "/img/halfinger_fjord",
+      "alt": "halfinger et fjord",
+      "container": "images"
+    }, {
       "name": "brume",
       "url": "/img/brume",
       "alt": "poulain fjord",
