@@ -1,17 +1,17 @@
 language: node_js
 sudo: required
-addons:
-  ssh_known_hosts: ${PROD_NAME}
 services:
 - docker
 node_js:
-- 5.10.1
+- 6.4.0
 script:
 - make
 - docker login -e ${DOCKER_EMAIL} -u ${DOCKER_USER} -p ${DOCKER_PASS}
 - docker push ${DOCKER_USER}/site-montdenis
 notifications:
   email: false
+addons:
+  ssh_known_hosts: ${PROD_NAME}
 before_install:
 - openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv
   -in deploy_rsa.enc -out deploy_rsa -d
@@ -22,6 +22,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ${PROD_USER}@${PROD_NAME} "cd code/site-montdenis && git checkout master && git pull origin master && docker-compose-deploy pension-montdenis.fr montdenis || true"
+  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "cd code/site-montdenis && git checkout master && git pull origin master && docker-compose-deploy pension-montdenis.fr montdenis"
   on:
     branch: master
