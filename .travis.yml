@@ -11,7 +11,7 @@ script:
 notifications:
   email: false
 addons:
-  ssh_known_hosts: ${PROD_NAME}
+  ssh_known_hosts: "${PROD_NAME}"
 before_install:
 - openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv
   -in deploy_rsa.enc -out deploy_rsa -d
@@ -22,6 +22,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
+  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" -- < ./deploy.sh
+    montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
   on:
     branch: master
