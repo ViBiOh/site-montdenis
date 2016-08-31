@@ -11,7 +11,7 @@ script:
 notifications:
   email: false
 addons:
-  ssh_known_hosts: ${SSH_HOST}
+  ssh_known_hosts: `echo ${SSH_HOST}`
 before_install:
 - openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv
   -in deploy_rsa.enc -out deploy_rsa -d
