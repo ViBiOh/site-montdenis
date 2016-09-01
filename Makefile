@@ -5,4 +5,4 @@ front:
 	npm run build
 
 docker:
-	docker build -t vibioh/site-montdenis --rm .
+	docker build -t vibioh/site-montdenis .
