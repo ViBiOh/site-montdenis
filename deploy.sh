@@ -27,7 +27,7 @@ function docker-compose-deploy() {
   docker rmi `docker images --filter dangling=true -q 2>/dev/null` 2>/dev/null
 }
 
-echo PATH=$PATH
+export PATH=${PATH}:/opt/bin
 
 PROJECT_NAME=${1}
 readVariableIfRequired "PROJECT_NAME"
