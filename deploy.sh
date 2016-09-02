@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 function readVariableIfRequired() {
   if [ -z "${!1}" ]; then
     read -p "${1}=" $1
@@ -25,6 +27,8 @@ function docker-compose-deploy() {
   docker rmi `docker images --filter dangling=true -q 2>/dev/null` 2>/dev/null
 }
 
+echo PATH=$PATH
+
 PROJECT_NAME=${1}
 readVariableIfRequired "PROJECT_NAME"
 
@@ -35,3 +39,4 @@ rm -rf ${PROJECT_NAME}
 git clone ${PROJECT_URL} ${PROJECT_NAME}
 cd ${PROJECT_NAME}
 docker-compose-deploy ${PROJECT_NAME} ${3}
+
