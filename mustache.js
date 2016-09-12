@@ -29,16 +29,32 @@ const options = require('yargs')
   .strict()
   .argv;
 
-const partials = options.partials ? glob.sync(options.partials) : [];
+const partialPromises = [];
+const partialsObj = {};
+if (options.partials) {
+  glob(options.partials, {}, (err, partials) => {
+    partials.forEach(partial => {
+      const promise = asyncReadFile(partial, 'utf-8');
+      partialPromises.push(promise);
+      promise.then(partialContent => {
+        partial.replace(/([^\/]*?\.html)/gi, (match, name) => {
+          partialsObj[name] = partialContent;
+        });
+      });
+    });
+  });
+}
 
-glob(options.template, {}, (err, templates) => {
-  templates.forEach(template => {
-    const allFiles = [];
-    allFiles.push(asyncReadFile(template.replace(/[^\/]*?\.html/gmi, 'mustache.json'), 'utf-8'));
-    allFiles.push(asyncReadFile(template, 'utf-8'));
+Promise.all(partialPromises).then(() => {
+  glob(options.template, {}, (err, templates) => {
+    templates.forEach(template => {
+      const allFiles = [];
+      allFiles.push(asyncReadFile(template.replace(/[^\/]*?\.html/gmi, 'mustache.json'), 'utf-8'));
+      allFiles.push(asyncReadFile(template, 'utf-8'));
 
-    Promise.all(allFiles).then(values => {
-      console.log(Mustache.render(values[1], values[0]));
+      Promise.all(allFiles).then(values => {
+        console.log(Mustache.render(values[1], JSON.parse(values[0]), partialsObj));
+      });
     });
   });
 });
