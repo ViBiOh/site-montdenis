@@ -37,7 +37,9 @@
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
     "clean-css": "latest",
+    "glob": "^7.0.6",
     "html-minifier": "latest",
+    "js-utils": "git+https://github.com/ViBiOh/js-utils.git",
     "less": "latest",
     "mustache": "latest",
     "normalize.css": "latest",
