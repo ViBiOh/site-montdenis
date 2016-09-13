@@ -8,7 +8,6 @@ const Mustache = require('mustache');
 const utils = require('js-utils');
 
 const asyncReadFile = utils.asyncifyCallback(fs.readFile);
-const asyncWriteFile = utils.asyncifyCallback(fs.writeFile);
 
 const options = require('yargs')
   .reset()
@@ -87,7 +86,11 @@ if (options.js) {
       const jsPromises = [];
 
       jsFiles.forEach(inlinedJs => {
-        jsPromises.push(asyncReadFile(inlinedJs, 'utf-8'));
+        const promise = asyncReadFile(inlinedJs, 'utf-8');
+        jsPromises.push(promise);
+        promise.then(jsContent => {
+          console.log(jsContent);
+        });
       });
 
       Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(error => handleError(error, reject));
