@@ -12,6 +12,12 @@ const asyncWriteFile = utils.asyncifyCallback(fs.writeFile);
 
 const options = require('yargs')
   .reset()
+  .options('template', {
+    alias: 't',
+    required: true,
+    type: 'String',
+    describe: 'Input'
+  })
   .options('bust', {
     alias: 'b',
     required: false,
@@ -24,11 +30,11 @@ const options = require('yargs')
     type: 'String',
     describe: 'Partials'
   })
-  .options('template', {
-    alias: 't',
-    required: true,
+  .options('js', {
+    alias: 'j',
+    required: false,
     type: 'String',
-    describe: 'Input'
+    describe: 'Inline JavaScript'
   })
   .options('output', {
     alias: 'o',
@@ -49,9 +55,11 @@ function handleError(err, reject) {
   }
 }
 
-var partialPromise;
+const outputIndexSchema = Math.max(0, options.template.indexOf('*'));
+const requiredPromises = [];
+
 if (options.partials) {
-  partialPromise = new Promise((resolve, reject) => {
+  requiredPromises.push(new Promise((resolve, reject) => {
     glob(options.partials, {}, (error, partials) => {
       handleError(error, reject);
 
@@ -66,14 +74,33 @@ if (options.partials) {
 
       Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(error => handleError(error, reject));
     });
-  });
+  }));
 } else {
-  partialPromise = Promise.resolve({});
+  requiredPromises.push(Promise.resolve({}));
 }
 
-const outputIndexSchema = Math.max(0, options.template.indexOf('*'));
+if (options.js) {
+  requiredPromises.push(new Promise((resolve, reject) => {
+    glob(options.js, {}, (error, jsFiles) => {
+      handleError(error, reject);
 
-partialPromise.then(partials => {
+      const jsPromises = [];
+
+      jsFiles.forEach(inlinedJs => {
+        jsPromises.push(asyncReadFile(inlinedJs, 'utf-8'));
+      });
+
+      Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(error => handleError(error, reject));
+    });
+  }));
+} else {
+  requiredPromises.push(Promise.resolve(''));
+}
+
+Promise.all(requiredPromises).then(required => {
+  const partials = required[0];
+  partials['inlineJs'] = `<script type="text/javascript">r${required[1]}</script>`;
+
   glob(options.template, {}, (error, templates) => {
     handleError(error);
 
