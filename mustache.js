@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const mkdirp = require('mkdirp');
 const Mustache = require('mustache');
 const utils = require('js-utils');
 
 const asyncReadFile = utils.asyncifyCallback(fs.readFile);
+const asyncWriteFile = utils.asyncifyCallback(fs.writeFile);
 
 const options = require('yargs')
   .reset()
@@ -30,7 +32,7 @@ const options = require('yargs')
     alias: 'o',
     required: false,
     type: 'String',
-    describe: 'Output dir'
+    describe: 'Output'
   })
   .help('help')
   .strict()
@@ -67,6 +69,8 @@ if (options.partials) {
   partialPromise = Promise.resolve({});
 }
 
+const outputIndexSchema = Math.max(0, options.template.indexOf('*'));
+
 partialPromise.then(partials => {
   glob(options.template, {}, (error, templates) => {
     handleError(error);
@@ -80,9 +84,17 @@ partialPromise.then(partials => {
         if (options.bust) {
           data.version = options.bust;
         }
-        const templateContent = values[1];
 
-        console.log(Mustache.render(templateContent, data, partials));
+        const rendered = Mustache.render(values[1], data, partials);
+        if (options.output) {
+          const outputFile = path.join(options.output, template.substring(outputIndexSchema));
+          mkdirp(path.dirname(outputFile), error => {
+            handleError(error);
+            fs.writeFile(outputFile, rendered, handleError);
+          });
+        } else {
+          console.log(rendered);
+        }
       });
     });
   });
