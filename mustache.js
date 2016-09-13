@@ -86,11 +86,7 @@ if (options.js) {
       const jsPromises = [];
 
       jsFiles.forEach(inlinedJs => {
-        const promise = asyncReadFile(inlinedJs, 'utf-8');
-        jsPromises.push(promise);
-        promise.then(jsContent => {
-          console.log(jsContent);
-        });
+        jsPromises.push(asyncReadFile(inlinedJs, 'utf-8'));
       });
 
       Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(error => handleError(error, reject));
@@ -102,7 +98,7 @@ if (options.js) {
 
 Promise.all(requiredPromises).then(required => {
   const partials = required[0];
-  partials['inlineJs'] = `<script type="text/javascript">r${required[1]}</script>`;
+  partials['inlineJs'] = `<script type="text/javascript">${required[1]}</script>`;
 
   glob(options.template, {}, (error, templates) => {
     handleError(error);
