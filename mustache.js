@@ -36,13 +36,20 @@ const options = require('yargs')
   .strict()
   .argv;
 
+function handleError(err, reject) {
+  if (err) {
+    if (reject) {
+      reject(err);
+    }
+    throw err;
+  }
+}
+
 var partialPromise;
 if (options.partials) {
   partialPromise = new Promise((resolve, reject) => {
-    glob(options.partials, {}, (err, partials) => {
-      if (err) {
-        reject(err);
-      }
+    glob(options.partials, {}, (error, partials) => {
+      handleError(error, reject);
 
       const partialObj = {};
       const partialsPromises = [];
@@ -53,7 +60,7 @@ if (options.partials) {
         promise.then(partialContent => partialObj[path.basename(partial)] = partialContent);
       });
 
-      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(err => reject(err));
+      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(error => handleError(error, reject));
     });
   });
 } else {
@@ -61,16 +68,22 @@ if (options.partials) {
 }
 
 partialPromise.then(partials => {
-  glob(options.template, {}, (err, templates) => {
-    if (err) {
-      reject(err);
-    }
+  glob(options.template, {}, (error, templates) => {
+    handleError(error);
 
     templates.forEach(template => {
       Promise.all([
         asyncReadFile(path.join(path.dirname(template), 'mustache.json'), 'utf-8'),
         asyncReadFile(template, 'utf-8')
-      ]).then(values => console.log(Mustache.render(values[1], JSON.parse(values[0]), partials)));
+      ]).then(values => {
+        const data = JSON.parse(values[0]);
+        if (options.bust) {
+          data.version = options.bust;
+        }
+        const templateContent = values[1];
+
+        console.log(Mustache.render(templateContent, data, partials));
+      });
     });
   });
-}).catch(err => console.error(err));
+}).catch(error => console.error(error));
