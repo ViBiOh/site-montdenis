@@ -1,6 +1,7 @@
-const Mustache = require('mustache');
-const glob = require('glob')
 const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const Mustache = require('mustache');
 const utils = require('js-utils');
 
 const asyncReadFile = utils.asyncifyCallback(fs.readFile);
@@ -23,38 +24,53 @@ const options = require('yargs')
     alias: 't',
     required: true,
     type: 'String',
-    describe: 'Input file'
+    describe: 'Input'
+  })
+  .options('output', {
+    alias: 'o',
+    required: false,
+    type: 'String',
+    describe: 'Output dir'
   })
   .help('help')
   .strict()
   .argv;
 
-const partialPromises = [];
-const partialsObj = {};
+var partialPromise;
 if (options.partials) {
-  glob(options.partials, {}, (err, partials) => {
-    partials.forEach(partial => {
-      const promise = asyncReadFile(partial, 'utf-8');
-      partialPromises.push(promise);
-      promise.then(partialContent => {
-        partial.replace(/([^\/]*?\.html)/gi, (match, name) => {
-          partialsObj[name] = partialContent;
-        });
+  partialPromise = new Promise((resolve, reject) => {
+    glob(options.partials, {}, (err, partials) => {
+      if (err) {
+        reject(err);
+      }
+
+      const partialObj = {};
+      const partialsPromises = [];
+
+      partials.forEach(partial => {
+        const promise = asyncReadFile(partial, 'utf-8');
+        partialsPromises.push(promise);
+        promise.then(partialContent => partialObj[path.basename(partial)] = partialContent);
       });
+
+      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(err => reject(err));
     });
   });
+} else {
+  partialPromise = Promise.resolve({});
 }
 
-Promise.all(partialPromises).then(() => {
+partialPromise.then(partials => {
   glob(options.template, {}, (err, templates) => {
-    templates.forEach(template => {
-      const allFiles = [];
-      allFiles.push(asyncReadFile(template.replace(/[^\/]*?\.html/gmi, 'mustache.json'), 'utf-8'));
-      allFiles.push(asyncReadFile(template, 'utf-8'));
+    if (err) {
+      reject(err);
+    }
 
-      Promise.all(allFiles).then(values => {
-        console.log(Mustache.render(values[1], JSON.parse(values[0]), partialsObj));
-      });
+    templates.forEach(template => {
+      Promise.all([
+        asyncReadFile(path.join(path.dirname(template), 'mustache.json'), 'utf-8'),
+        asyncReadFile(template, 'utf-8')
+      ]).then(values => console.log(Mustache.render(values[1], JSON.parse(values[0]), partials)));
     });
   });
-});
+}).catch(err => console.error(err));
