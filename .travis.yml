@@ -3,9 +3,10 @@ sudo: required
 services:
 - docker
 node_js:
-- 6.4.0
+- 6.5.0
 script:
-- make
+- npm run build
+- docker build -t ${DOCKER_USER}/site-montdenis .
 - docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
 - docker push ${DOCKER_USER}/site-montdenis
 notifications:
@@ -19,7 +20,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" -- < ./deploy.sh
-    montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
+  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
   on:
     branch: master
