@@ -15,31 +15,31 @@ const options = require('yargs')
     alias: 't',
     required: true,
     type: 'String',
-    describe: 'Input'
+    describe: 'Input',
   })
   .options('bust', {
     alias: 'b',
     required: false,
     type: 'String',
-    describe: 'Cache-buster (commit SHA-1)'
+    describe: 'Cache-buster (commit SHA-1)',
   })
   .options('partials', {
     alias: 'p',
     required: false,
     type: 'String',
-    describe: 'Partials'
+    describe: 'Partials',
   })
   .options('js', {
     alias: 'j',
     required: false,
     type: 'String',
-    describe: 'Inline JavaScript'
+    describe: 'Inline JavaScript',
   })
   .options('output', {
     alias: 'o',
     required: false,
     type: 'String',
-    describe: 'Output'
+    describe: 'Output',
   })
   .help('help')
   .strict()
@@ -65,13 +65,15 @@ if (options.partials) {
       const partialObj = {};
       const partialsPromises = [];
 
-      partials.forEach(partial => {
+      partials.forEach((partial) => {
         const promise = asyncReadFile(partial, 'utf-8');
         partialsPromises.push(promise);
-        promise.then(partialContent => partialObj[path.basename(partial)] = partialContent);
+        promise.then((partialContent) => {
+          partialObj[path.basename(partial)] = partialContent;
+        });
       });
 
-      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(error => handleError(error, reject));
+      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(err => handleError(err, reject));
     });
   }));
 } else {
@@ -85,29 +87,29 @@ if (options.js) {
 
       const jsPromises = [];
 
-      jsFiles.forEach(inlinedJs => {
+      jsFiles.forEach((inlinedJs) => {
         jsPromises.push(asyncReadFile(inlinedJs, 'utf-8'));
       });
 
-      Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(error => handleError(error, reject));
+      Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(err => handleError(err, reject));
     });
   }));
 } else {
   requiredPromises.push(Promise.resolve(''));
 }
 
-Promise.all(requiredPromises).then(required => {
+Promise.all(requiredPromises).then((required) => {
   const partials = required[0];
-  partials['inlineJs'] = `<script type="text/javascript">${required[1]}</script>`;
+  partials.inlineJs = `<script type="text/javascript">${required[1]}</script>`;
 
   glob(options.template, {}, (error, templates) => {
     handleError(error);
 
-    templates.forEach(template => {
+    templates.forEach((template) => {
       Promise.all([
         asyncReadFile(path.join(path.dirname(template), 'mustache.json'), 'utf-8'),
-        asyncReadFile(template, 'utf-8')
-      ]).then(values => {
+        asyncReadFile(template, 'utf-8'),
+      ]).then((values) => {
         const data = JSON.parse(values[0]);
         if (options.bust) {
           data.version = options.bust;
@@ -116,8 +118,8 @@ Promise.all(requiredPromises).then(required => {
         const rendered = Mustache.render(values[1], data, partials);
         if (options.output) {
           const outputFile = path.join(options.output, template.substring(outputIndexSchema));
-          mkdirp(path.dirname(outputFile), error => {
-            handleError(error);
+          mkdirp(path.dirname(outputFile), (err) => {
+            handleError(err);
             fs.writeFile(outputFile, rendered, handleError);
           });
         } else {
