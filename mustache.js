@@ -47,10 +47,10 @@ const options = require('yargs')
 
 function handleError(err, reject) {
   if (err) {
-    if (reject) {
-      reject(err);
+    if (!reject) {
+      throw err;
     }
-    throw err;
+    reject(err);
   }
 }
 
