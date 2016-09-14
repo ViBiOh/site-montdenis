@@ -12,7 +12,7 @@ function handleNav(target) {
 
 function handleClick(event) {
   if (navElement.contains(event.target)) {
-      return;
+    return;
   }
   handleNav(toggleLink.contains(event.target));
 }
