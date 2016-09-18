@@ -8,12 +8,14 @@
       "name": "haflinger",
       "url": "/img/haflinger",
       "alt": "haflinger dans les prés",
-      "container": "article"
+      "container": "article",
+      "class": "full"
     }, {
       "name": "ballade",
       "url": "/img/ballade",
       "alt": "ballade accessible",
-      "container": "article"
+      "container": "article",
+      "class": "full"
     }
   ]
 }
