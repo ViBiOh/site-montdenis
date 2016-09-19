@@ -35,6 +35,12 @@ const options = require('yargs')
     type: 'String',
     describe: 'Inline JavaScript',
   })
+  .options('css', {
+    alias: 'c',
+    required: false,
+    type: 'String',
+    describe: 'Inline CSS',
+  })
   .options('output', {
     alias: 'o',
     required: false,
@@ -47,11 +53,26 @@ const options = require('yargs')
 
 function handleError(err, reject) {
   if (err) {
-    if (!reject) {
+    if (typeof reject !== 'function') {
       throw err;
     }
     reject(err);
   }
+}
+
+function inline(pattern) {
+  if (pattern) {
+    return new Promise((resolve, reject) => {
+      glob(pattern, {}, (error, files) => {
+        handleError(error, reject);
+
+        Promise.all(files.map(file => asyncReadFile(file, 'utf-8')))
+          .then(contents => resolve(contents.join('')))
+          .catch(err => handleError(err, reject));
+      });
+    });
+  }
+  return Promise.resolve('');
 }
 
 const outputIndexSchema = Math.max(0, options.template.indexOf('*'));
@@ -73,49 +94,47 @@ if (options.partials) {
         });
       });
 
-      Promise.all(partialsPromises).then(() => resolve(partialObj)).catch(err => handleError(err, reject));
+      Promise.all(partialsPromises)
+        .then(() => resolve(partialObj))
+        .catch(err => handleError(err, reject));
     });
   }));
 } else {
   requiredPromises.push(Promise.resolve({}));
 }
 
-if (options.js) {
-  requiredPromises.push(new Promise((resolve, reject) => {
-    glob(options.js, {}, (error, jsFiles) => {
-      handleError(error, reject);
-
-      const jsPromises = [];
-
-      jsFiles.forEach((inlinedJs) => {
-        jsPromises.push(asyncReadFile(inlinedJs, 'utf-8'));
-      });
-
-      Promise.all(jsPromises).then(js => resolve(js.join(''))).catch(err => handleError(err, reject));
-    });
-  }));
-} else {
-  requiredPromises.push(Promise.resolve(''));
-}
+requiredPromises.push(inline(options.js));
+requiredPromises.push(inline(options.css));
 
 Promise.all(requiredPromises).then((required) => {
   const partials = required[0];
   partials.inlineJs = `<script type="text/javascript">${required[1]}</script>`;
+  partials.inlineCss = `<style type="text/css">${required[2]}</script>`;
 
   glob(options.template, {}, (error, templates) => {
     handleError(error);
 
     templates.forEach((template) => {
+      const mutachePath = path.join(path.dirname(template), 'mustache.json');
+
       Promise.all([
-        asyncReadFile(path.join(path.dirname(template), 'mustache.json'), 'utf-8'),
         asyncReadFile(template, 'utf-8'),
+        new Promise((resolve, reject) => {
+          fs.access(mutachePath, (err) => {
+            if (err) {
+              resolve('{}');
+              console.warn(`No 'mustache.json' found for ${template}`);
+            }
+            asyncReadFile(mutachePath, 'utf-8').then(resolve, reject);
+          });
+        }),
       ]).then((values) => {
-        const data = JSON.parse(values[0]);
+        const data = JSON.parse(values[1]);
         if (options.bust) {
           data.version = options.bust;
         }
 
-        const rendered = Mustache.render(values[1], data, partials);
+        const rendered = Mustache.render(values[0], data, partials);
         if (options.output) {
           const outputFile = path.join(options.output, template.substring(outputIndexSchema));
           mkdirp(path.dirname(outputFile), (err) => {
@@ -125,7 +144,7 @@ Promise.all(requiredPromises).then((required) => {
         } else {
           console.log(rendered);
         }
-      });
+      }).catch(handleError);
     });
   });
-}).catch(error => console.error(error));
+}).catch(error => console.log(error));
