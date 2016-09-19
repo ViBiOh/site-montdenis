@@ -63,6 +63,14 @@ function handleError(err, reject) {
   }
 }
 
+function displayError(error) {
+  if (error instanceof Error) {
+    console.error(error.stack);
+  } else {
+    console.error(error);
+  }
+}
+
 function inline(pattern) {
   if (pattern) {
     return new Promise((resolve, reject) => {
@@ -145,10 +153,4 @@ Promise.all(requiredPromises).then((required) => {
       });
     });
   });
-}).catch(error => {
-  if (error instanceof Error) {
-    console.error(error.stack);
-  } else {
-    console.error(error);
-  }
-});
+}).catch(displayError);
