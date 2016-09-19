@@ -51,10 +51,13 @@ const options = require('yargs')
   .strict()
   .argv;
 
+const OUTPUT_INDEX_SCHEMA = Math.max(0, options.template.indexOf('*'));
+const requiredPromises = [];
+
 function handleError(err, reject) {
   if (err) {
     if (typeof reject !== 'function') {
-      throw err;
+      throw new Error(err);
     }
     reject(err);
   }
@@ -75,8 +78,23 @@ function inline(pattern) {
   return Promise.resolve('');
 }
 
-const outputIndexSchema = Math.max(0, options.template.indexOf('*'));
-const requiredPromises = [];
+function partialPromise(partialFile, partialObj) {
+  return new Promise((resolve, reject) => {
+    asyncReadFile(partialFile, 'utf-8').then(partialContent => {
+      partialObj[path.basename(partialFile)] = partialContent;
+      resolve();
+    }).catch(reject);
+  });
+}
+
+function mustachePromise(mustacheFile, template) {
+  return new Promise((resolve) => {
+    asyncReadFile(mustacheFile, 'utf-8').then(resolve).catch((error) => {
+      resolve('{}');
+      console.warn(`Unable to read ${mustacheFile} for template ${template} with reason ${error}`);
+    });
+  });
+}
 
 if (options.partials) {
   requiredPromises.push(new Promise((resolve, reject) => {
@@ -84,17 +102,7 @@ if (options.partials) {
       handleError(error, reject);
 
       const partialObj = {};
-      const partialsPromises = [];
-
-      partials.forEach((partial) => {
-        const promise = asyncReadFile(partial, 'utf-8');
-        partialsPromises.push(promise);
-        promise.then((partialContent) => {
-          partialObj[path.basename(partial)] = partialContent;
-        });
-      });
-
-      Promise.all(partialsPromises)
+      Promise.all(partials.map(partial => partialPromise(partial, partialObj)))
         .then(() => resolve(partialObj))
         .catch(err => handleError(err, reject));
     });
@@ -115,19 +123,9 @@ Promise.all(requiredPromises).then((required) => {
     handleError(error);
 
     templates.forEach((template) => {
-      const mutachePath = path.join(path.dirname(template), 'mustache.json');
-
       Promise.all([
         asyncReadFile(template, 'utf-8'),
-        new Promise((resolve, reject) => {
-          fs.access(mutachePath, (err) => {
-            if (err) {
-              resolve('{}');
-              console.warn(`No 'mustache.json' found for ${template}`);
-            }
-            asyncReadFile(mutachePath, 'utf-8').then(resolve, reject);
-          });
-        }),
+        mustachePromise(path.join(path.dirname(template), 'mustache.json'), template),
       ]).then((values) => {
         const data = JSON.parse(values[1]);
         if (options.bust) {
@@ -136,7 +134,7 @@ Promise.all(requiredPromises).then((required) => {
 
         const rendered = Mustache.render(values[0], data, partials);
         if (options.output) {
-          const outputFile = path.join(options.output, template.substring(outputIndexSchema));
+          const outputFile = path.join(options.output, template.substring(OUTPUT_INDEX_SCHEMA));
           mkdirp(path.dirname(outputFile), (err) => {
             handleError(err);
             fs.writeFile(outputFile, rendered, handleError);
@@ -144,7 +142,13 @@ Promise.all(requiredPromises).then((required) => {
         } else {
           console.log(rendered);
         }
-      }).catch(handleError);
+      });
     });
   });
-}).catch(error => console.log(error));
+}).catch(error => {
+  if (error instanceof Error) {
+    console.error(error.stack);
+  } else {
+    console.error(error);
+  }
+});
