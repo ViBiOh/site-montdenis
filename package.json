@@ -4,7 +4,7 @@
   "description": "Site Pension et Elevage de Montdenis",
   "main": "dist/index.html",
   "scripts": {
-    "clean": "rm -rf ./dist/* && rm -rf ./tmp && mkdir ./tmp",
+    "clean": "rm -rf ./dist && rm -rf ./tmp && mkdir ./tmp && mkdir ./dist",
     "copy:txt": "cp ./src/*.txt ./dist/",
     "copy:html": "cp ./src/*.html ./dist/",
     "copy:xml": "cp ./src/*.xml ./dist/",
