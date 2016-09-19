@@ -3,7 +3,7 @@ version: '2'
 services:
   montdenis:
     image: vibioh/site-montdenis
-    command: --domain "*.google-analytics.com *.waze.com *.gstatic.com"
+    command: --domain "*.google-analytics.com *.waze.com"
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: ${DOMAIN}'
