@@ -50,10 +50,23 @@ address {
   font-style: normal;
 }
 
-img, .full {
+figure {
   width: 90%;
-  border: 2px solid white;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+figcaption {
+  font-style: italic;
+  color: @dark;
+}
+
+img {
+  width: 100%;
   border-radius: 10px;
+  border: 2px solid white;
 }
 
 .half {
@@ -132,7 +145,7 @@ img, .full {
     .smallPadding;
   }
 
-  img, iframe, img.half {
+  iframe, .half {
     width: 100%;
   }
   
@@ -168,7 +181,7 @@ img, .full {
 
 .throbber {
   margin: 100px auto 0;
-  display: inline-block;
+  display: none;
   text-align: center;
 }
 

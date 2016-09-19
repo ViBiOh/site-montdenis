@@ -8,33 +8,28 @@
     {
       "name": "halfinger_fjord",
       "url": "/img/halfinger_fjord",
-      "alt": "halfinger et fjord",
-      "class": "half",
-      "container": "images"
+      "alt": "Halfingers et Fjords cohabitent",
+      "class": "half"
     }, {
       "name": "brume",
       "url": "/img/brume",
-      "alt": "poulain fjord",
-      "class": "half",
-      "container": "images"
+      "alt": "Un de nos poulains fjords",
+      "class": "half"
     }, {
       "name": "poulain",
       "url": "/img/poulain",
-      "alt": "gros plan poulain",
-      "class": "half",
-      "container": "images"
+      "alt": "Naissance sur la pension et prise en main dès le plus jeune âge",
+      "class": "half"
     }, {
       "name": "poulains",
       "url": "/img/poulains_1",
-      "alt": "poulains dormant dans les prés",
-      "class": "half",
-      "container": "images"
+      "alt": "Des poulains élevés dans la quiétude de la campagne",
+      "class": "half"
     },  {
       "name": "poulains_2",
       "url": "/img/poulains_2",
-      "alt": "poulains dans les prés",
-      "class": "half",
-      "container": "images"
+      "alt": "Grands espaces pour leur croissance",
+      "class": "half"
     }
   ]
 }

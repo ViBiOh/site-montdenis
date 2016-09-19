@@ -8,21 +8,18 @@
     {
       "name": "pres",
       "url": "/img/pres",
-      "alt": "pres",
-      "class": "half",
-      "container": "images"
+      "alt": "Vertes et spacieuses pâtures pour vos équidés",
+      "class": "half"
     }, {
       "name": "carriere",
       "url": "/img/carriere",
-      "alt": "carriere",
-      "class": "half",
-      "container": "images"
+      "alt": "Une carrière de sable dotée d'une bordure en bois",
+      "class": "half"
     }, {
       "name": "ballade",
       "url": "/img/ballade",
-      "alt": "chemins de ballade",
-      "class": "half",
-      "container": "images"
+      "alt": "Des chemins de ballade entourant le domaine",
+      "class": "half"
     }
   ]
 }

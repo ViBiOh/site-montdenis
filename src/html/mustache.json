@@ -8,15 +8,11 @@
     {
       "name": "haflinger",
       "url": "/img/haflinger",
-      "alt": "haflinger dans les prés",
-      "container": "article",
-      "class": "full"
+      "alt": "Haflingers nés sur le domaine dans nos prés"
     }, {
       "name": "ballade",
       "url": "/img/ballade",
-      "alt": "ballade accessible",
-      "container": "article",
-      "class": "full"
+      "alt": "Des chemins de ballade entourant le domaine"
     }
   ]
 }
