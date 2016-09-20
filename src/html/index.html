@@ -11,9 +11,11 @@
     <p>L'alimentation est <strong>produite sur notre exploitation</strong> et est principalement constituée de végétaux : herbe, foin et ajout d'orge aplatie en hiver.</p>
     <P>Le foin est distribué dès que la quantité ou la qualité de herbe le nécessite.</p>
   </section>
-  {{#images}}
-    {{> asyncImage.html}}
-  {{/images}}
+  <p id="images">
+    {{#images}}
+      {{> asyncImage.html}}
+    {{/images}}
+  </p>
 </article>
 {{> toggle.html}}
 {{> microdata.html}}
