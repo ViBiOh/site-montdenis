@@ -91,8 +91,22 @@ article img {
 }
 
 @media screen and (min-width: 641px) {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header span {
+    .smallPadding;
+  }
+
   section {
     .smallPadding;
+  }
+
+  nav .logo {
+    display: none;
   }
 
   .bgImg {
@@ -113,6 +127,10 @@ article img {
     z-index: -1;
   }
 
+  #lookRight {
+    transform: scale(-1, 1);
+  }
+
   #pension::after {
     background-image: url('/img/haflinger.jpg?v={{version}}');
   }
@@ -128,12 +146,21 @@ article img {
   header {
     font-size: 1em;
   }
+
+  header .logo {
+    display: none;
+  }
   
   nav {
     position: fixed;
     bottom: @toggleMenuHeight;
     right: 0;
     display: none;
+    z-index: 20;
+  }
+
+  nav .logo {
+    display: inline-block;
   }
 
   nav.displayed {
