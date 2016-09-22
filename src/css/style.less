@@ -140,6 +140,10 @@ article img {
     z-index: -1;
   }
 
+  #toggleMenu {
+    display: none;
+  }
+
   #lookRight {
     transform: scale(-1, 1);
   }
@@ -193,16 +197,13 @@ article img {
     .darkBox;
     .smallPadding;
     position: fixed;
+    border: 0;
     bottom: 0;
     right: 0;
+    font-size: 2em;
     text-align: center;
     width: @toggleMenuHeight;
     height: @toggleMenuHeight;
-  }
-
-  #toggleMenu:before {
-    font-size: 2em;
-    content: "\2261";
   }
 }
 
