@@ -3,7 +3,7 @@ version: '2'
 services:
   montdenis:
     image: vibioh/site-montdenis
-    command: --notFound --domain "*.google-analytics.com *.openstreetmap.org"
+    command: --notFound --domain "*.google-analytics.com fonts.gstatic.com *.openstreetmap.org"
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: ${DOMAIN}'
