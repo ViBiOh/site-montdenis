@@ -43,6 +43,12 @@ const options = require('yargs')
     type: 'String',
     describe: 'Inline CSS',
   })
+  .options('svg', {
+    alias: 's',
+    required: false,
+    type: 'String',
+    describe: 'Inline SVG',
+  })
   .options('output', {
     alias: 'o',
     required: false,
@@ -151,12 +157,14 @@ if (options.partials) {
 
 requiredPromises.push(inline(options.js));
 requiredPromises.push(inline(options.css));
+requiredPromises.push(inline(options.svg));
 
 new Promise((resolve, reject) => {
   Promise.all(requiredPromises).then((required) => {
     const partials = required[0];
     partials.inlineJs = `<script type="text/javascript">${required[1]}</script>`;
     partials.inlineCss = `<style type="text/css">${required[2]}</style>`;
+    partials.inlineSvg = `${required[3]}`;
 
     glob(options.template, {}, (error, templates) => {
       handleError(error, reject);
