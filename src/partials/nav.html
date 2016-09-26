@@ -1,12 +1,37 @@
-<nav itemprop="breadcrumb">
+<nav vocab="http://schema.org/" typeof="BreadcrumbList">
   <ul>
-    <li><a href="/" itemprop="url">Accueil</a></li>
-    <li><a href="/installations/" itemprop="url">Installations</a></li>
-    <li><a href="/elevage/" itemprop="url">Elevage</a></li>
-    <li><a href="/contact/" itemprop="url">Contact</a></li>
+    <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href="/">
+        <span property="name">Accueil</span>
+      </a>
+      <meta property="position" content="1">
+    </li>
+    <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href="/installations/">
+        <span property="name">Installations</span>
+      </a>
+      <meta property="position" content="2">
+    </li>
+    <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href="/elevage/" property="name">
+        <span property="name">Elevage</span>
+      </a>
+      <meta property="position" content="3">
+    </li>
+    <li property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" href="/contact/" property="name">
+        <span property="name">Contact</span>
+      </a>
+      <meta property="position" content="4">
+    </li>
     <hr />
-    <li>Montdenis &copy; 2016
-        <br><a id="legals" href="/legals/" itemprop="url">Mentions légales</a></li>
+    <li property="itemListElement" typeof="ListItem">Montdenis &copy; 2016
+        <br>
+      <a property="item" typeof="WebPage" id="legals" href="/legals/">
+        <span property="name">Mentions légales</span>
+      </a>
+      <meta property="position" content="5">
+    </li>
     <li><img src="/img/logo.svg?v={{version}}" alt="logo" height="50" width="50" class="logo"></li>
   </ul>
 </nav>
