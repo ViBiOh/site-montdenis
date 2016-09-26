@@ -16,12 +16,6 @@ const options = require('yargs')
     type: 'String',
     describe: 'Input',
   })
-  .options('breadcrumb', {
-    alias: 'b',
-    required: true,
-    type: 'String',
-    describe: 'BreadCrumb path',
-  })
   .options('sitemap', {
     alias: 's',
     required: true,
@@ -60,30 +54,6 @@ function jsonPromise(json) {
   });
 }
 
-function breadCrumbConverter(data) {
-  return {
-    '@type': 'ListItem',
-    item: {
-      '@type': 'WebSite',
-      '@id': data.url,
-      image: data.img,
-      name: data.title,
-    }
-  };
-}
-
-function breadCrumbStructure(items) {
-  return `
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [${items}]
-    }
-    </script>
-  `;
-}
-
 function sitemapConverter(data) {
   return `
     <url>
@@ -113,10 +83,9 @@ new Promise((resolve, reject) => {
 
     Promise.all(jsons.map(jsonPromise))
       .then(pages => {
-        Promise.all([
-          promiseWriteFile(options.sitemap, sitemapStructure(pages.map(sitemapConverter).join(''))),
-          promiseWriteFile(options.breadcrumb, breadCrumbStructure(pages.map(breadCrumbConverter).map(JSON.stringify).join(',\n')))
-        ]).then(() => resolve(jsons.join('\n'))).catch(reject);
+          promiseWriteFile(options.sitemap, sitemapStructure(pages.map(sitemapConverter).join('')))
+            .then(() => resolve(jsons.join('\n')))
+            .catch(reject);
       }).catch(reject);
   });
 }).then(displaySuccess).catch(displayError);
