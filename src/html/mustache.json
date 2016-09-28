@@ -4,6 +4,13 @@
   "url": "https://pension-montdenis.fr",
   "img": "https://pension-montdenis.fr/img/haflinger.jpg",
   "googlePlusId": "106057871765404669246",
+  "breadcrumb": [
+    {
+      "url": "https://pension-montdenis.fr/",
+      "name": "Accueil",
+      "position": 1
+    }
+  ],
   "images": [
     {
       "name": "haflinger",
