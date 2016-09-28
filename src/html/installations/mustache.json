@@ -4,6 +4,17 @@
   "url": "https://pension-montdenis.fr/installations/",
   "img": "https://pension-montdenis.fr/img/carriere.jpg",
   "googlePlusId": "106057871765404669246",
+  "breadcrumb": [
+    {
+      "url": "https://pension-montdenis.fr/",
+      "name": "Accueil",
+      "position": 1
+    }, {
+      "url": "https://pension-montdenis.fr/installations/",
+      "name": "Installations",
+      "position": 2
+    }
+  ],
   "images": [
     {
       "name": "pres",
