@@ -4,6 +4,17 @@
   "url": "https://pension-montdenis.fr/elevage/",
   "img": "https://pension-montdenis.fr/img/brume.jpg",
   "googlePlusId": "106057871765404669246",
+  "breadcrumb": [
+    {
+      "url": "https://pension-montdenis.fr/",
+      "name": "Accueil",
+      "position": 1
+    }, {
+      "url": "https://pension-montdenis.fr/elevage/",
+      "name": "Elevage",
+      "position": 2
+    }
+  ],
   "images": [
     {
       "name": "halfinger_fjord",
