@@ -3,5 +3,16 @@
   "description": "Mentions légales de notre site internet destiné à promouvoir notre pension et élevage de chevaux près de Paris, à Sancy-les-Meaux",
   "url": "https://pension-montdenis.fr/legals/",
   "img": "https://pension-montdenis.fr/android-chrome-512x512.png",
-  "googlePlusId": "106057871765404669246"
+  "googlePlusId": "106057871765404669246",
+  "breadcrumb": [
+    {
+      "url": "https://pension-montdenis.fr/",
+      "name": "Accueil",
+      "position": 1
+    }, {
+      "url": "https://pension-montdenis.fr/legals/",
+      "name": "Mentions légales",
+      "position": 2
+    }
+  ]
 }
