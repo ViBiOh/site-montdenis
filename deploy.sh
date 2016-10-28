@@ -10,6 +10,24 @@ function readVariableIfRequired() {
   fi
 }
 
+function docker-clean() {
+  docker rmi `docker images --filter dangling=true -q 2>/dev/null` 2>/dev/null
+}
+
+function docker-compose-deploy() {
+  PROJECT_NAME=${1}
+  readVariableIfRequired "PROJECT_NAME"
+
+  DOMAIN=${2}
+  readVariableIfRequired "DOMAIN"
+
+  export DOMAIN=${DOMAIN}
+
+  docker-compose -p ${PROJECT_NAME} pull
+  docker-compose -p ${PROJECT_NAME} up -d
+  docker-clean
+}
+
 function docker-compose-hot-deploy() {
   PROJECT_NAME=${1}
   readVariableIfRequired "PROJECT_NAME"
@@ -19,7 +37,7 @@ function docker-compose-hot-deploy() {
 
   SERVICE_NAME=${3}
   readVariableIfRequired "SERVICE_NAME"
-  
+
   export DOMAIN=${DOMAIN}
 
   existingContainer=`docker-compose -p ${PROJECT_NAME} ps | grep ${SERVICE_NAME} | awk '{print $1}'`
@@ -32,7 +50,7 @@ function docker-compose-hot-deploy() {
   docker stop ${existingContainer}
   docker rm -f -v ${existingContainer}
   
-  docker rmi `docker images --filter dangling=true -q 2>/dev/null` 2>/dev/null
+  docker-clean
 }
 
 export PATH=${PATH}:/opt/bin
@@ -46,5 +64,11 @@ readVariableIfRequired "PROJECT_URL"
 rm -rf ${PROJECT_NAME}
 git clone ${PROJECT_URL} ${PROJECT_NAME}
 cd ${PROJECT_NAME}
-docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
 
+if [ `docker-compose -p ${PROJECT_NAME} ps | awk '{if (NR > 2) {print}}' | wc -l` -eq 0 ]; then
+  echo "Deploying new instance"
+  docker-compose-deploy ${PROJECT_NAME} ${3}
+else
+  echo "Hot deploying service ${4}"
+  docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
+fi
