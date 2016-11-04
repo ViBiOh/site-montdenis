@@ -177,10 +177,14 @@ article img, article svg {
   
   nav {
     position: fixed;
-    bottom: @toggleMenuHeight;
-    right: 0;
+    bottom: @toggleMenuHeight + 20px;
+    right: 10px;
     display: none;
     z-index: 20;
+  }
+
+  nav > ul {
+    border-radius: 10px;
   }
 
   nav .logo {
@@ -205,12 +209,13 @@ article img, article svg {
     .smallPadding;
     position: fixed;
     border: 0;
-    bottom: 0;
-    right: 0;
+    bottom: 10px;
+    right: 10px;
     font-size: 2em;
     text-align: center;
     width: @toggleMenuHeight;
     height: @toggleMenuHeight;
+    border-radius: 50%;
   }
 }
 
