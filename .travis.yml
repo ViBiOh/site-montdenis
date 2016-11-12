@@ -20,6 +20,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr site
+  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
   on:
     branch: master
