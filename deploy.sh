@@ -84,3 +84,4 @@ else
   echo "Hot deploying stack"
   docker-compose-hot-deploy ${PROJECT_NAME} ${3}
 fi
+docker-compose -p ${PROJECT_NAME} logs
