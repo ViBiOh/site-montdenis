@@ -4,11 +4,19 @@ services:
 - docker
 node_js:
 - 6.7.0
+cache:
+  directories:
+  - .node_modules/
 before_install:
 - openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv -in deploy_rsa.enc -out deploy_rsa -d
 script: |
   npm run build &&
   docker build -t ${DOCKER_USER}/site-montdenis .
+after_success:
+  - if [ "${TRAVIS_BRANCH}" == "master" ]; then
+      docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} &&
+      docker push ${DOCKER_USER}/site-montdenis &&
+    fi
 notifications:
   email: false
 before_deploy:
@@ -18,9 +26,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: |
-    docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} &&
-    docker push ${DOCKER_USER}/site-montdenis &&
-    ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
+  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
   on:
     branch: master
