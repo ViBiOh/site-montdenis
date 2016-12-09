@@ -12,10 +12,10 @@ before_install:
 script: |
   npm run build &&
   docker build -t ${DOCKER_USER}/site-montdenis .
-after_success:
-  - if [ "${TRAVIS_BRANCH}" == "master" ]; then
-      docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} && docker push ${DOCKER_USER}/site-montdenis
-    fi
+after_success: |
+  if [ "${TRAVIS_BRANCH}" == "master" ]; then
+    docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} && docker push ${DOCKER_USER}/site-montdenis
+  fi
 notifications:
   email: false
 before_deploy:
