@@ -1,6 +1,6 @@
 # site-montdenis
 
-[![Build Status](https://travis-ci.org/ViBiOh/site-montdenis.svg?branch=master)](https://travis-ci.org/ViBiOh/site-montdenis) [![](https://badge.imagelayers.io/vibioh/site-montdenis:latest.svg)](https://imagelayers.io/?images=vibioh/site-montdenis:latest 'Get your own badge on imagelayers.io')
+[![Build Status](https://travis-ci.org/ViBiOh/site-montdenis.svg?branch=master)](https://travis-ci.org/ViBiOh/site-montdenis) [![](https://images.microbadger.com/badges/image/vibioh/site-montdenis.svg)](https://microbadger.com/images/vibioh/site-montdenis "Get your own image badge on microbadger.com")
 
 [Personal website](https://pension-montdenis.fr)
 
