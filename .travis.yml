@@ -24,6 +24,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh montdenis https://github.com/ViBiOh/site-montdenis.git pension-montdenis.fr
+  script: curl -u ${DEPLOY_USER}:${DEPLOY_PASS} -X POST https://docker-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
   on:
     branch: master
