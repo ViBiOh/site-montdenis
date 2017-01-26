@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
-    "clean-css": "latest",
+    "clean-css-cli": "latest",
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-config-airbnb-base": "latest",
