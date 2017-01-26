@@ -3,7 +3,8 @@ version: '2'
 services:
   site:
     image: vibioh/site-montdenis
-    command: -notFound -csp 'default-src ''self'' *.google-analytics.com fonts.gstatic.com *.openstreetmap.org; script-src ''self'' ''unsafe-inline''; style-src ''self'' ''unsafe-inline'';'
+    command: |
+      -notFound -csp 'default-src 'self' *.google-analytics.com fonts.gstatic.com *.openstreetmap.org; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';'
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: pension-montdenis.fr'
