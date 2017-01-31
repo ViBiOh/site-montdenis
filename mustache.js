@@ -98,7 +98,8 @@ function inline(pattern) {
 
 function partialPromise(partialFile, partialObj) {
   return new Promise((resolve, reject) => {
-    promiseReadFile(partialFile, 'utf-8').then(partialContent => {
+    promiseReadFile(partialFile, 'utf-8').then((partialContent) => {
+      // eslint-disable-next-line no-param-reassign
       partialObj[path.basename(partialFile)] = partialContent;
       resolve();
     }).catch(reject);
@@ -106,14 +107,12 @@ function partialPromise(partialFile, partialObj) {
 }
 
 function mustachePromise(mustacheFile, template) {
-  return new Promise((resolve, reject) => {
-    promiseReadFile(mustacheFile, 'utf-8')
-      .then(resolve)
-      .catch((error) => {
-        resolve('{}');
-        console.warn(`Unable to read ${mustacheFile} for template ${template} with reason ${error}`);
-      });
-  });
+  return new Promise(resolve => promiseReadFile(mustacheFile, 'utf-8')
+    .then(resolve)
+    .catch((error) => {
+      resolve('{}');
+      console.warn(`Unable to read ${mustacheFile} for template ${template} with reason ${error}`);
+    }));
 }
 
 function templatePromise(template, partials) {
