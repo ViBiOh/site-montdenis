@@ -15,6 +15,6 @@ notifications:
 deploy:
   provider: script
   skip_cleanup: true
-  script: curl -u ${DEPLOY_USER}:${DEPLOY_PASS} -X POST https://docker-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
+  script: curl -u ${DEPLOY_USER}:${DEPLOY_PASS} -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
   on:
     branch: master
