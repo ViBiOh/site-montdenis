@@ -17,9 +17,9 @@
   ],
   "images": [
     {
-      "name": "halfinger_fjord",
-      "url": "/img/halfinger_fjord",
-      "alt": "Halfingers et Fjords cohabitent",
+      "name": "concours",
+      "url": "/img/concours",
+      "alt": "Des modèles et allures",
       "class": "half"
     }, {
       "name": "brume",
@@ -40,6 +40,11 @@
       "name": "poulains_2",
       "url": "/img/poulains_2",
       "alt": "Grands espaces pour leur croissance",
+      "class": "half"
+    }, {
+      "name": "looky",
+      "url": "/img/looky",
+      "alt": "Un de nos haflingers",
       "class": "half"
     }
   ]
