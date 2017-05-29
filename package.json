@@ -47,18 +47,18 @@
     "normalize.css": "latest",
     "stylelint": "latest",
     "stylelint-config-standard": "latest",
-    "uglify-js": "latest"
+    "uglify-es": "latest"
   },
   "dependencies": {},
   "eslintConfig": {
     "extends": "airbnb/base",
     "rules": {
       "max-len": 1,
-       "import/no-extraneous-dependencies": 1
+      "import/no-extraneous-dependencies": 1
     },
     "env": {
-        "browser": true,
-        "node": true
+      "browser": true,
+      "node": true
     }
   },
   "stylelint": {
