@@ -42,7 +42,7 @@
     "eslint-config-airbnb-base": "latest",
     "eslint-plugin-import": "latest",
     "html-minifier": "latest",
-    "js-index-builder": "git+https://github.com/ViBiOh/js-index-builder.git",
+    "js-index-builder": "ViBiOh/js-index-builder",
     "less": "latest",
     "normalize.css": "latest",
     "stylelint": "latest",
