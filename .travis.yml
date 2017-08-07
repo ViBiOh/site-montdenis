@@ -20,14 +20,14 @@ notifications:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: curl -u ${DEPLOY_USER}:${DEPLOY_PASS} -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
+  script: curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
   on:
     all_branches: true
     condition: ${TRAVIS_BRANCH} == 'master'
 - provider: script
   skip_cleanup: true
   script: >-
-    cat docker-compose.yml | sed "s|traefik.frontend.rule.*|traefik.frontend.rule: 'Host: www-${TRAVIS_BRANCH}.pension-montdenis.fr'|" | sed "s|${DOCKER_IMAGE_DEFAULT}|${DOCKER_IMAGE_NAME}|" | curl -u ${DEPLOY_USER}:${DEPLOY_PASS} -X POST https://dashboard-api.vibioh.fr/containers/montdenis-${TRAVIS_BRANCH}/ --data-binary @-
+    cat docker-compose.yml | sed "s|traefik.frontend.rule.*|traefik.frontend.rule: 'Host: www-${TRAVIS_BRANCH}.pension-montdenis.fr'|" | sed "s|${DOCKER_IMAGE_DEFAULT}|${DOCKER_IMAGE_NAME}|" | curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis-${TRAVIS_BRANCH}/ --data-binary @-
   on:
     all_branches: true
     condition: ${TRAVIS_BRANCH} != 'master'
