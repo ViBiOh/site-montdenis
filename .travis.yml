@@ -20,7 +20,7 @@ notifications:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml
+  script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml"
   on:
     all_branches: true
     condition: ${TRAVIS_BRANCH} == 'master'
