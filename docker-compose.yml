@@ -4,8 +4,8 @@ services:
   site:
     image: vibioh/site-montdenis
     command:
-    - -prometheusMetricsRemoteHost
-    - ^pension:1080$$
+    - -prometheusMetricsHost
+    - pension:1080
     - -notFound
     - -csp
     - default-src 'self'; script-src 'self' 'unsafe-inline' www.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self' fonts.gstatic.com; img-src 'self' www.google-analytics.com; child-src 'self' www.openstreetmap.org;
