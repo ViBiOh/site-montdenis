@@ -4,8 +4,6 @@ services:
   site:
     image: vibioh/site-montdenis
     command:
-    - -prometheusMetricsHost
-    - pension:1080
     - -notFound
     - -csp
     - default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; child-src 'self' www.openstreetmap.org;
