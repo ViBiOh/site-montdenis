@@ -11,6 +11,8 @@ services:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: pension-montdenis.fr, www.pension-montdenis.fr'
       traefik.port: '1080'
+      traefik.backend.maxconn.amount: '16'
+      traefik.backend.maxconn.extractorfunc: 'client.ip'
       traefik.frontend.rateLimit.extractorFunc: 'client.ip'
       traefik.frontend.rateLimit.rateSet.first.period: '60'
       traefik.frontend.rateLimit.rateSet.first.average: '100'
