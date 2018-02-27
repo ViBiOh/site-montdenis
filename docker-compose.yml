@@ -6,7 +6,9 @@ services:
     command:
     - -notFound
     - -csp
-    - default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; child-src 'self' www.openstreetmap.org;
+    - default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; child-src 'self' www.openstreetmap.org
+    - -headers
+    - X-UA-Compatible:IE=edge,chrome=1~content-language:fr
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: pension-montdenis.fr, www.pension-montdenis.fr'
