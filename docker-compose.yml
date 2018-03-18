@@ -12,6 +12,7 @@ services:
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: pension-montdenis.fr, www.pension-montdenis.fr'
+      traefik.protocol: 'https'
       traefik.port: '1080'
       traefik.frontend.rateLimit.extractorFunc: 'client.ip'
       traefik.frontend.rateLimit.rateSet.first.period: '60'
