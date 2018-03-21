@@ -1,23 +1,13 @@
-<figure id="{{{name}}}-figure" class="{{class}}">
+<figure id="figure-{{{name}}}" class="{{class}}">
   <noscript>
     <img src="{{{url}}}.jpg?v={{version}}" alt="{{alt}}" srcset="{{{url}}}.jpg?v={{version}}, {{{url}}}-640.jpg?v={{version}} 640w">
   </noscript>
-  <div class="throbber {{class}}" id="{{{name}}}-throbber">
+
+  <div class="throbber {{class}}" id="throbber-{{{name}}}" data-id="{{{name}}}" data-srcset="{{{url}}}.jpg?v={{version}}" data-srcset="{{{url}}}.jpg?v={{version}}, {{{url}}}-640.jpg?v={{version}} 640w" data-alt="thumbnail">
     <div class="bounce1"></div>
     <div class="bounce2"></div>
     <div class="bounce3"></div>
   </div>
-  <script type="text/javascript">
-    document.getElementById('{{{name}}}-throbber').style.display = 'inline-block';
-    var {{{name}}} = new Image();
-    {{{name}}}.onload = function () {
-      document.getElementById('{{{name}}}-figure').insertBefore({{{name}}}, document.getElementById('{{{name}}}-caption'));
-      document.getElementById('{{{name}}}-throbber').style.display = 'none';
-    };
-    {{{name}}}.srcset = '{{{url}}}.jpg?v={{version}}, {{{url}}}-640.jpg?v={{version}} 640w';
-    {{{name}}}.src = '{{{url}}}.jpg?v={{version}}';
-    {{{name}}}.alt = '{{alt}}';
-    {{{name}}}.width = '0';
-  </script>
+
   <figcaption id="{{{name}}}-caption">{{{alt}}}</figcaption>
 </figure>
