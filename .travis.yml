@@ -14,7 +14,7 @@ script: |
 
   docker build -t ${DOCKER_IMAGE_NAME} .
 after_success: |
-  echo $(DOCKER_PASS) | docker login -u $(DOCKER_USER) --password-stdin && docker push ${DOCKER_IMAGE_NAME}
+  echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin && docker push ${DOCKER_IMAGE_NAME}
 notifications:
   email: false
 deploy:
