@@ -1,33 +1,33 @@
-language: node_js
-sudo: required
-services:
-- docker
-node_js: 8
-script: |
-  npm run build
+jobs:
+  include:
+  - stage: Build
 
-  DOCKER_IMAGE_DEFAULT=${DOCKER_USER}/site-montdenis
-  DOCKER_IMAGE_NAME=${DOCKER_IMAGE_DEFAULT}
-  if [ "${TRAVIS_BRANCH}" != "master" ]; then
-    DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME}:${TRAVIS_BRANCH}
-  fi
+    language: node_js
+    sudo: required
+    services:
+    - docker
+    node_js: 8
+    script: |
+      npm run build && \
+      docker build -t ${DOCKER_USER}/montdenis .
+    after_success: |
+      if [ "${TRAVIS_BRANCH}" == "master" ]; then
+        echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin && \
+        docker push ${DOCKER_USER}/montdenis
+      fi
 
-  docker build -t ${DOCKER_IMAGE_NAME} .
-after_success: |
-  echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin && docker push ${DOCKER_IMAGE_NAME}
+  - stage: Deploy
+
+    script: skip
+    deploy:
+      provider: script
+      skip_cleanup: true
+      script: 'curl -H "Authorization: GitHub ${GITHUB_OAUTH_TOKEN}" -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml'
+
+stages:
+  - Build
+  - name: Deploy
+    if: branch = master
+
 notifications:
   email: false
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis/ --data-binary @docker-compose.yml"
-  on:
-    all_branches: true
-    condition: ${TRAVIS_BRANCH} == 'master'
-- provider: script
-  skip_cleanup: true
-  script: >-
-    cat docker-compose.yml | sed "s|traefik.frontend.rule.*|traefik.frontend.rule: 'Host: www-${TRAVIS_BRANCH}.pension-montdenis.fr'|" | sed "s|${DOCKER_IMAGE_DEFAULT}|${DOCKER_IMAGE_NAME}|" | curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/containers/montdenis-${TRAVIS_BRANCH}/ --data-binary @-
-  on:
-    all_branches: true
-    condition: ${TRAVIS_BRANCH} != 'master'
