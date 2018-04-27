@@ -2,7 +2,7 @@ version: '2'
 
 services:
   site:
-    image: vibioh/site-montdenis
+    image: vibioh/montdenis
     command:
     - -notFound
     - -csp
