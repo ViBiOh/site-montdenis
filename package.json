@@ -15,12 +15,14 @@
     "eslint": "./node_modules/.bin/eslint --fix src/js/nav.js",
     "lint": "npm run stylelint && npm run eslint",
     "js": "cat ./src/js/*.js | ./node_modules/.bin/uglifyjs -c > ./tmp/index.js",
-    "style": "./node_modules/.bin/lessc ./src/css/style.less | cat ./node_modules/normalize.css/normalize.css - | ./node_modules/.bin/cleancss -O2 -o ./tmp/style.css",
+    "style": "cat ./src/css/style.css | ./node_modules/.bin/cleancss -O2 -o ./tmp/style.css",
     "mustache": "./node_modules/js-index-builder/index.js -t \"src/html/**/*.html\" -b `git log --pretty=format:'%h' -n 1` -p \"src/partials/*.html\" -j ./tmp/index.js -c ./tmp/style.css -s ./src/img/logo_404.svg -o ./tmp",
     "html-minify": "./node_modules/.bin/html-minifier --config-file ./html-minifier.json --input-dir ./tmp --output-dir ./dist",
     "html": "npm run mustache && npm run html-minify",
     "structure": "./node_modules/js-index-builder/sitemap.js -j \"src/html/**/*.json\" -s ./dist/sitemap.xml",
-    "build": "npm run clean && npm run lint && npm run copy && npm run js && npm run style && npm run structure && npm run html"
+    "build": "npm run clean && npm run lint && npm run copy && npm run js && npm run style && npm run structure && npm run html",
+    "prestart": "go get github.com/ViBiOh/viws/cmd/viws",
+    "start": "viws -tls=false -directory ${INIT_CWD}/dist -notFound -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/; child-src 'self' *.openstreetmap.org\" -headers X-UA-Compatible:ie=edge~content-language:fr"
   },
   "repository": {
     "type": "git",
@@ -35,21 +37,18 @@
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
     "clean-css-cli": "latest",
-    "eslint": "latest",
-    "eslint-config-airbnb": "latest",
+    "eslint": "4",
     "eslint-config-airbnb-base": "latest",
     "eslint-plugin-import": "latest",
     "html-minifier": "latest",
     "js-index-builder": "ViBiOh/js-index-builder",
-    "less": "latest",
-    "normalize.css": "latest",
     "stylelint": "latest",
     "stylelint-config-standard": "latest",
     "uglify-es": "latest"
   },
   "dependencies": {},
   "eslintConfig": {
-    "extends": "airbnb/base",
+    "extends": "airbnb-base",
     "rules": {
       "max-len": 1,
       "import/no-extraneous-dependencies": 1
