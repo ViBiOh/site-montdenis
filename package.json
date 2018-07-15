@@ -22,7 +22,7 @@
     "structure": "./node_modules/js-index-builder/sitemap.js -j \"src/html/**/*.json\" -s ./dist/sitemap.xml",
     "build": "npm run clean && npm run lint && npm run copy && npm run js && npm run style && npm run structure && npm run html",
     "prestart": "go get github.com/ViBiOh/viws/cmd/viws",
-    "start": "viws -tls=false -directory ${INIT_CWD}/dist -notFound -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/; img-src 'self' fathom.vibioh.fr; connect-src 'self' fathom.vibioh.fr; frame-src 'self' *.openstreetmap.org\" -headers X-UA-Compatible:ie=edge~content-language:fr"
+    "start": "viws -tls=false -directory ${INIT_CWD}/dist -notFound -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/; img-src 'self' fathom.vibioh.fr; frame-src 'self' *.openstreetmap.org\" -headers X-UA-Compatible:ie=edge~content-language:fr"
   },
   "repository": {
     "type": "git",
