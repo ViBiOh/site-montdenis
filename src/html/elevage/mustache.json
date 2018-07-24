@@ -24,6 +24,16 @@
       "alt": "Des modèles et allures",
       "class": "half"
     }, {
+      "name": "attelage",
+      "url": "/img/guillaume_dressage",
+      "alt": "Épreuve de dressage en attelage",
+      "class": "half"
+    }, {
+      "name": "championnat",
+      "url": "/img/guillaume_championnat_de_france",
+      "alt": "Participation au championnat de France",
+      "class": "half"
+    }, {
       "name": "brume",
       "url": "/img/brume",
       "alt": "Un de nos poulains fjords",
