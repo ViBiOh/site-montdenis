@@ -1,13 +1,13 @@
+@charset "UTF-8";
+
+@import url('https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css');
+
 :root {
   --dark: #438240;
   --clear: #f8f8f8;
   --icon-size: 30px;
   --toggle-menu-height: 60px;
 }
-
-@charset "UTF-8";
-
-@import url('https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css');
 
 * {
   box-sizing: border-box;
