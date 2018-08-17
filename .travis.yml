@@ -10,11 +10,11 @@ jobs:
     install: npm install
     script: |
       npm run build && \
-      docker build -t ${DOCKER_USER}/montdenis .
+      docker build -t vibioh/montdenis .
     after_success: |
       if [ "${TRAVIS_BRANCH}" == "master" ]; then
-        echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin && \
-        docker push ${DOCKER_USER}/montdenis
+        echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin && \
+        docker push vibioh/montdenis
       fi
 
   - stage: Deploy
