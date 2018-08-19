@@ -2,20 +2,24 @@ jobs:
   include:
   - stage: Build
 
-    language: node_js
     sudo: required
     services:
     - docker
-    node_js: 10
-    install: npm install
-    script: |
-      npm run build && \
-      docker build -t vibioh/montdenis .
+    script: docker build -t vibioh/montdenis:${TRAVIS_COMMIT} .
     after_success: |
-      if [ "${TRAVIS_BRANCH}" == "master" ]; then
-        echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin && \
-        docker push vibioh/montdenis
-      fi
+      echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin && \
+      docker push vibioh/montdenis:${TRAVIS_COMMIT}
+
+  - stage: Publish
+
+    sudo: required
+    services:
+    - docker
+    script: |
+      echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin
+      docker pull vibioh/montdenis:${TRAVIS_COMMIT}
+      docker tag vibioh/montdenis:${TRAVIS_COMMIT} vibioh/montdenis:latest
+      docker push vibioh/montdenis:latest
 
   - stage: Deploy
 
@@ -27,6 +31,8 @@ jobs:
 
 stages:
   - Build
+  - name: Publish
+    if: branch = master
   - name: Deploy
     if: branch = master
 
