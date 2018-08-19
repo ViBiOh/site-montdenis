@@ -12,4 +12,4 @@ RUN npm ci \
 
 FROM vibioh/viws
 
-COPY dist/ /www/
+COPY --from=builder /app/dist/ /www/
