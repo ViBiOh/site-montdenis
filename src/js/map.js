@@ -1,4 +1,4 @@
-if (mapboxgl && document.getElementById('map')) {
+if (window.mapboxgl && document.getElementById('map')) {
   var coordinates = [2.956476579635819, 48.86757827445496];
 
   mapboxgl.accessToken =
