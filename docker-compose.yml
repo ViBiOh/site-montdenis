@@ -9,8 +9,6 @@ services:
     - "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' fathom.vibioh.fr *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: fathom.vibioh.fr; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com"
     - -headers
     - X-UA-Compatible:ie=edge~content-language:fr
-    - -tracingName
-    - montdenis
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: pension-montdenis.fr, www.pension-montdenis.fr'
