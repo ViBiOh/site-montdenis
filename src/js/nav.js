@@ -21,5 +21,4 @@ window.addEventListener('load', () => {
   }
 
   document.addEventListener('touchstart', handleClick);
-  document.addEventListener('click', handleClick);
 });
