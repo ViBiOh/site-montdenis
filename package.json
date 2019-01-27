@@ -35,32 +35,16 @@
   },
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
-    "clean-css-cli": "latest",
-    "eslint": "5",
-    "eslint-config-airbnb-base": "latest",
-    "eslint-plugin-import": "latest",
-    "html-minifier": "latest",
+    "clean-css-cli": "4.2.1",
+    "eslint": "5.12.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "4.0.0",
+    "eslint-plugin-import": "2.15.0",
+    "html-minifier": "3.5.21",
     "js-index-builder": "ViBiOh/js-index-builder",
-    "stylelint": "latest",
-    "stylelint-config-standard": "latest",
-    "uglify-es": "latest"
+    "stylelint": "9.10.1",
+    "stylelint-config-standard": "18.2.0",
+    "uglify-es": "3.3.9"
   },
-  "dependencies": {},
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "rules": {
-      "max-len": 1,
-      "import/no-extraneous-dependencies": 1
-    },
-    "env": {
-      "browser": true,
-      "node": true
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "no-descending-specificity": null
-    }
-  }
+  "dependencies": {}
 }
