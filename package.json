@@ -35,9 +35,9 @@
   "homepage": "https://github.com/ViBiOh/site-montdenis",
   "devDependencies": {
     "clean-css-cli": "4.2.1",
-    "eslint": "5.13.0",
+    "eslint": "5.15.1",
     "eslint-config-airbnb": "17.1.0",
-    "eslint-config-prettier": "4.0.0",
+    "eslint-config-prettier": "4.1.0",
     "eslint-plugin-import": "2.16.0",
     "html-minifier": "3.5.21",
     "js-index-builder": "ViBiOh/js-index-builder",
