@@ -9,7 +9,7 @@
     "copy:favicon": "cp ./src/favicon/* ./dist/",
     "copy:img": "cp ./src/img/* ./dist/img/",
     "copy": "npm run copy:robots && npm run copy:favicon && npm run copy:img",
-    "stylelint": "stylelint \"src/**/*.less\"",
+    "stylelint": "stylelint \"src/**/*.css\"",
     "eslint": "eslint --fix src/js/nav.js",
     "lint": "npm run stylelint && npm run eslint",
     "js": "cat ./src/js/*.js | uglifyjs -c > ./tmp/index.js",
@@ -38,11 +38,11 @@
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",
-    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-import": "2.17.1",
     "html-minifier": "4.0.0",
     "js-index-builder": "ViBiOh/js-index-builder#master",
-    "stylelint": "9.10.1",
-    "stylelint-config-standard": "18.2.0",
+    "stylelint": "10.0.0",
+    "stylelint-config-standard": "18.3.0",
     "uglify-es": "3.3.9"
   },
   "dependencies": {}
