@@ -5,21 +5,21 @@ jobs:
     sudo: required
     services:
     - docker
-    script: docker build -t vibioh/montdenis:${TRAVIS_COMMIT} .
-    after_success: |
-      echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin && \
-      docker push vibioh/montdenis:${TRAVIS_COMMIT}
+    script: docker build --build-arg "VERSION=${TRAVIS_COMMIT}" -t "vibioh/montdenis:${TRAVIS_COMMIT}" .
+    after_success:
+    - echo "${DOCKER_PASS}" | docker login -u vibioh --password-stdin
+    - docker push "vibioh/montdenis:${TRAVIS_COMMIT}"
 
   - stage: Publish
 
     sudo: required
     services:
     - docker
-    script: |
-      echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin
-      docker pull vibioh/montdenis:${TRAVIS_COMMIT}
-      docker tag vibioh/montdenis:${TRAVIS_COMMIT} vibioh/montdenis:latest
-      docker push vibioh/montdenis:latest
+    script:
+    - echo "${DOCKER_PASS}" | docker login -u vibioh --password-stdin
+    - docker pull "vibioh/montdenis:${TRAVIS_COMMIT}"
+    - docker tag "vibioh/montdenis:${TRAVIS_COMMIT}" "vibioh/montdenis:latest"
+    - docker push "vibioh/montdenis:latest"
 
   - stage: Deploy
 
@@ -27,7 +27,7 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: bash script/deploy "https://deploy.vibioh.fr/montdenis/${TRAVIS_COMMIT}" "@docker-compose.yml"
+      script: bash script/deploy montdenis "${TRAVIS_COMMIT}" "@docker-compose.yml"
 
 stages:
   - Build
