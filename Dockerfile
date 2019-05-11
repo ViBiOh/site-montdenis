@@ -4,12 +4,10 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm ci \
- && npm run build \
- && mkdir -p /app \
- && cp -r dist/ /app/
+ && npm run build
 
 FROM vibioh/viws
 
 ARG APP_VERSION
 ENV VERSION=${APP_VERSION}
-COPY --from=builder /app/dist/ /www/
+COPY --from=builder /usr/src/app/dist/ /www/
