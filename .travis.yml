@@ -5,7 +5,7 @@ jobs:
     sudo: required
     services:
     - docker
-    script: docker build --build-arg "VERSION=${TRAVIS_COMMIT}" -t "vibioh/montdenis:${TRAVIS_COMMIT}" .
+    script: docker build --build-arg "APP_VERSION=${TRAVIS_COMMIT}" -t "vibioh/montdenis:${TRAVIS_COMMIT}" .
     after_success:
     - echo "${DOCKER_PASS}" | docker login -u vibioh --password-stdin
     - docker push "vibioh/montdenis:${TRAVIS_COMMIT}"
