@@ -6,7 +6,7 @@ COPY . .
 RUN npm ci \
  && npm run build
 
-FROM vibioh/viws
+FROM vibioh/viws:light
 
 ARG APP_VERSION
 ENV VERSION=${APP_VERSION}
