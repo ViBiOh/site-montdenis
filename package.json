@@ -37,7 +37,7 @@
     "clean-css-cli": "4.3.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
-    "eslint-config-prettier": "4.2.0",
+    "eslint-config-prettier": "4.3.0",
     "eslint-plugin-import": "2.17.2",
     "html-minifier": "4.0.0",
     "js-index-builder": "ViBiOh/js-index-builder#master",
