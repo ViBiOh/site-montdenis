@@ -27,7 +27,7 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: bash script/deploy montdenis "${TRAVIS_COMMIT}" "@docker-compose.yml"
+      script: bash script/deploy montdenis "@docker-compose.yml"
 
 stages:
   - Build
