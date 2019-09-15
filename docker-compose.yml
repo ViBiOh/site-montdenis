@@ -4,7 +4,6 @@ services:
   site:
     image: vibioh/montdenis
     command:
-    - -notFound
     - -csp
     - "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com"
     - -headers
