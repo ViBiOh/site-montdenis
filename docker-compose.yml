@@ -9,14 +9,18 @@ services:
     - -headers
     - X-UA-Compatible:ie=edge~content-language:fr
     labels:
-      traefik.frontend.passHostHeader: 'true'
-      traefik.frontend.rule: 'Host: pension-montdenis.fr, www.pension-montdenis.fr'
-      traefik.protocol: 'http'
-      traefik.port: '1080'
-      traefik.frontend.rateLimit.extractorFunc: 'client.ip'
-      traefik.frontend.rateLimit.rateSet.first.period: '60'
-      traefik.frontend.rateLimit.rateSet.first.average: '100'
-      traefik.frontend.rateLimit.rateSet.first.burst: '200'
+      traefik.http.routers.montdenis-http.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
+      traefik.http.routers.montdenis-http.entrypoints: http
+      traefik.http.routers.montdenis-http.middlewares: redirect@file
+      traefik.http.routers.montdenis-https.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
+      traefik.http.routers.montdenis-https.entrypoints: https
+      traefik.http.routers.montdenis-https.middlewares: compress@file
+      traefik.http.routers.montdenis-https.tls: true
+      traefik.http.routers.montdenis-https.tls.certResolver: default
+      traefik.http.services.montdenis-service.loadbalancer.passhostheader: true
+      traefik.http.services.montdenis-service.loadbalancer.server.port: '1080'
+      traefik.http.middlewares.montdenis-rate-limit.ratelimit.average: '10'
+      traefik.http.middlewares.montdenis-rate-limit.ratelimit.burst: '50'
     restart: on-failure:5
     read_only: true
     cpu_shares: 128
