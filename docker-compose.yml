@@ -7,9 +7,11 @@ services:
       traefik.http.routers.montdenis-http.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
       traefik.http.routers.montdenis-http.entrypoints: http
       traefik.http.routers.montdenis-http.middlewares: redirect@file
+      traefik.http.middlewares.montdenis-wwwredirect.redirectregex.regex: ^https://pension-montdenis.fr(.*)
+      traefik.http.middlewares.montdenis-wwwredirect.redirectregex.replacement: https://www.pension-montdenis.fr$${1}
       traefik.http.routers.montdenis-https.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
       traefik.http.routers.montdenis-https.entrypoints: https
-      traefik.http.routers.montdenis-https.middlewares: compress@file, web-limit@file
+      traefik.http.routers.montdenis-https.middlewares: compress@file, web-limit@file, montdenis-wwwredirect
       traefik.http.routers.montdenis-https.tls: true
       traefik.http.routers.montdenis-https.tls.certresolver: default
       traefik.http.services.montdenis-service.loadbalancer.server.port: '1080'
