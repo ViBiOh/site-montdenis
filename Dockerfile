@@ -4,7 +4,9 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm ci \
- && npm run build
+ && npm run build \
+ && git diff -- *.go \
+ && git diff --quiet -- *.go
 
 FROM vibioh/viws:light
 
