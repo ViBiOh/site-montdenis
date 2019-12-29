@@ -8,19 +8,16 @@ jobs:
       node_js:
         - 13
       script: npm run build
-
-    - stage: Publish
-
-      language: node_js
-      node_js:
-        - 13
-      script: npm run build && npm run publish
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: ${GITHUB_TOKEN}
+        local_dir: dist/
+        on:
+          branch: master
 
 stages:
-  - name: Build
-    if: branch != master
-  - name: Publish
-    if: branch = master && type = push
+  - Build
 
 notifications:
   email: false
