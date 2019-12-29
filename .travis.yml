@@ -4,38 +4,22 @@ jobs:
   include:
     - stage: Build
 
-      sudo: required
-      language: minimal
-      services:
-        - docker
-      script: docker build --build-arg "APP_VERSION=${TRAVIS_COMMIT}" -t "${DOCKER_USER}/montdenis:${TRAVIS_COMMIT}" .
-      after_success:
-        - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-        - docker push "${DOCKER_USER}/montdenis:${TRAVIS_COMMIT}"
+      language: node_js
+      node_js:
+        - 13
+      script: npm run build
 
     - stage: Publish
 
-      sudo: required
-      language: minimal
-      services:
-        - docker
-      script:
-        - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "docker_promote"
-        - scripts/docker_promote "${DOCKER_USER}/montdenis" "${TRAVIS_COMMIT}"
-
-    - stage: Deploy
-
-      language: minimal
-      script:
-        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "deploy"
-        - scripts/deploy "montdenis" "@docker-compose.yml"
+      language: node_js
+      node_js:
+        - 13
+      script: npm run build && npm run publish
 
 stages:
-  - Build
+  - name: Build
+    if: branch != master
   - name: Publish
-    if: branch = master && type = push
-  - name: Deploy
     if: branch = master && type = push
 
 notifications:
