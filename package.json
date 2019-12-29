@@ -20,7 +20,8 @@
     "structure": "./node_modules/js-index-builder/sitemap.js -j \"src/html/**/*.json\" -s ./dist/sitemap.xml",
     "build": "npm run clean && npm run style && npm run copy && npm run js && npm run css && npm run structure && npm run html",
     "prestart": "go get github.com/ViBiOh/viws/cmd/viws-light",
-    "start": "viws-light -directory ${INIT_CWD}/dist -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com\" -headers X-UA-Compatible:ie=edge~content-language:fr"
+    "start": "viws-light -directory ${INIT_CWD}/dist -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com\" -headers X-UA-Compatible:ie=edge~content-language:fr",
+    "publish": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "6.7.0",
     "eslint-plugin-import": "2.19.1",
+    "gh-pages": "2.1.1",
     "html-minifier": "4.0.0",
     "js-index-builder": "ViBiOh/js-index-builder#master",
     "stylelint": "12.0.0",
