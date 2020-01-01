@@ -6,17 +6,17 @@ services:
   site:
     image: ${DOCKER_USER}/montdenis
     labels:
-      traefik.http.routers.domaine-http.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
-      traefik.http.routers.domaine-http.entrypoints: http
-      traefik.http.routers.domaine-http.middlewares: redirect@file
-      traefik.http.middlewares.domaine-wwwredirect.redirectregex.regex: ^https://www.pension-montdenis.fr(.*)
-      traefik.http.middlewares.domaine-wwwredirect.redirectregex.replacement: https://pension-montdenis.fr$${1}
-      traefik.http.routers.domaine-https.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
-      traefik.http.routers.domaine-https.entrypoints: https
-      traefik.http.routers.domaine-https.middlewares: compress@file, web-limit@file, domaine-wwwredirect
-      traefik.http.routers.domaine-https.tls: true
-      traefik.http.routers.domaine-https.tls.certresolver: default
-      traefik.http.services.domaine-service.loadbalancer.server.port: "1080"
+      traefik.http.routers.montdenis-http.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
+      traefik.http.routers.montdenis-http.entrypoints: http
+      traefik.http.routers.montdenis-http.middlewares: redirect@file
+      traefik.http.middlewares.montdenis-wwwredirect.redirectregex.regex: ^https://www.pension-montdenis.fr(.*)
+      traefik.http.middlewares.montdenis-wwwredirect.redirectregex.replacement: https://pension-montdenis.fr$${1}
+      traefik.http.routers.montdenis-https.rule: Host(`pension-montdenis.fr`) || Host(`www.pension-montdenis.fr`)
+      traefik.http.routers.montdenis-https.entrypoints: https
+      traefik.http.routers.montdenis-https.middlewares: compress@file, web-limit@file, montdenis-wwwredirect
+      traefik.http.routers.montdenis-https.tls: true
+      traefik.http.routers.montdenis-https.tls.certresolver: default
+      traefik.http.services.montdenis-service.loadbalancer.server.port: "1080"
     environment:
       VIWS_CSP: "default-src 'self'; base-uri 'self'; script-src 'self' api.tiles.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ https://api.tiles.mapbox.com; img-src 'self' data: blob: ; connect-src 'self' https://*.tiles.mapbox.com https://api.mapbox.com; child-src blob:; worker-src blob:"
       VIWS_HEADERS: X-UA-Compatible:ie=edge~content-language:fr
