@@ -18,7 +18,7 @@ services:
       traefik.http.routers.montdenis-https.tls.certresolver: default
       traefik.http.services.montdenis-service.loadbalancer.server.port: "1080"
     environment:
-      VIWS_CSP: "default-src 'self'; base-uri 'self'; script-src 'self' api.tiles.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ https://api.tiles.mapbox.com; img-src 'self' data: blob: ; connect-src 'self' https://*.tiles.mapbox.com https://api.mapbox.com; child-src blob:; worker-src blob:"
+      VIWS_CSP: "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com"
       VIWS_HEADERS: X-UA-Compatible:ie=edge~content-language:fr
     restart: on-failure:5
     read_only: true
