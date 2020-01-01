@@ -4,20 +4,40 @@ jobs:
   include:
     - stage: Build
 
-      language: node_js
-      node_js:
-        - 13
-      script: npm run build
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: ${GITHUB_TOKEN}
-        local_dir: dist/
-        on:
-          branch: master
+      sudo: required
+      language: minimal
+      services:
+        - docker
+      script: docker build --build-arg "APP_VERSION=${TRAVIS_COMMIT:0:8}" -t "${DOCKER_USER}/montdenis:${TRAVIS_COMMIT:0:8}" .
+      after_success:
+        - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
+        - docker push "${DOCKER_USER}/montdenis:${TRAVIS_COMMIT:0:8}"
+
+    - stage: Publish
+
+      sudo: required
+      language: minimal
+      services:
+        - docker
+      script:
+        - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
+        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "docker_promote"
+        - scripts/docker_promote "${DOCKER_USER}/montdenis" "${TRAVIS_COMMIT:0:8}"
+
+    - stage: Deploy
+
+      language: minimal
+      script:
+        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "deploy" "env_replace"
+        - scripts/env_replace docker-compose.yml DOCKER_USER | sed "s|\\\$|\$\$|g" > docker-compose-env.yml
+        - scripts/deploy "montdenis" "@docker-compose-env.yml"
 
 stages:
   - Build
+  - name: Publish
+    if: branch = master && type = push
+  - name: Deploy
+    if: branch = master && type = push
 
 notifications:
   email: false
