@@ -1,14 +1,13 @@
 window.addEventListener('load', function() {
-  function onImgLoad(id, img, throbber) {
+  function onImgLoad(id, imageContent, throbberContent) {
     return function() {
-      document.getElementById('figure-' + id).replaceChild(img, throbber);
+      document.getElementById('figure-' + id).replaceChild(imageContent, throbberContent);
     }
   }
 
   var throbbers = document.querySelectorAll('.throbber');
   for (var i = throbbers.length - 1; i >= 0; i--) {
     var throbber = throbbers[i];
-
     throbber.style.display = 'inline-block';
 
     var img = new Image();
