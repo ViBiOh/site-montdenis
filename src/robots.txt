@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.pension-montdenis.fr/sitemap.xml
+Sitemap: https://pension.montdenis.fr/sitemap.xml
