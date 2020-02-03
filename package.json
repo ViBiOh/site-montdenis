@@ -39,7 +39,7 @@
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-import": "2.20.1",
     "html-minifier": "4.0.0",
     "js-index-builder": "ViBiOh/js-index-builder#master",
     "stylelint": "13.0.0",
