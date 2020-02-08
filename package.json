@@ -20,8 +20,7 @@
     "structure": "./node_modules/js-index-builder/sitemap.js -j \"src/html/**/*.json\" -s ./dist/sitemap.xml",
     "build": "npm run clean && npm run style && npm run copy && npm run js && npm run css && npm run structure && npm run html",
     "prestart": "go get github.com/ViBiOh/viws/cmd/viws-light",
-    "start": "viws-light -directory ${INIT_CWD}/dist -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com\" -headers X-UA-Compatible:ie=edge~content-language:fr",
-    "publish": "gh-pages -d dist"
+    "start": "viws-light -directory ${INIT_CWD}/dist -csp \"default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' *.mapbox.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/normalize.css@8.0.0/ *.mapbox.com; img-src 'self' data: blob: ; child-src 'self' blob:; worker-src 'self' blob:; connect-src 'self' *.mapbox.com\" -headers X-UA-Compatible:ie=edge~content-language:fr"
   },
   "repository": {
     "type": "git",
