@@ -17,15 +17,17 @@
     {
       "name": "haflinger",
       "url": "/img/haflinger",
-      "alt": "Haflingers nés sur le domaine dans nos prés"
+      "alt": "Haflingers nés sur le domaine dans nos prés",
+      "class": "half"
+    }, {
+      "name": "ballade",
+      "url": "/img/ballade",
+      "alt": "Des chemins de ballade entourant le domaine",
+      "class": "half"
     }, {
       "name": "concours",
       "url": "/img/marathon",
       "alt": "Participation à des concours d'attelage"
-    }, {
-      "name": "ballade",
-      "url": "/img/ballade",
-      "alt": "Des chemins de ballade entourant le domaine"
     }
   ]
 }
