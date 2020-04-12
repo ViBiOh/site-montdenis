@@ -34,16 +34,16 @@
       "alt": "Participation au championnat de France",
       "class": "half"
     }, {
+      "name": "poulain",
+      "url": "/img/bebe_fjord",
+      "alt": "Un de nos poulains fjords né en 2020",
+      "class": "half"
+    }, {
       "name": "brume",
       "url": "/img/brume",
-      "alt": "Un de nos poulains fjords",
-      "class": "half"
-    }, {
-      "name": "poulain",
-      "url": "/img/poulain",
       "alt": "Naissance sur la pension et prise en main dès le plus jeune âge",
       "class": "half"
-    }, {
+    },  {
       "name": "poulains",
       "url": "/img/poulains_1",
       "alt": "Des poulains élevés dans la quiétude de la campagne",
