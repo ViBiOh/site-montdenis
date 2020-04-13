@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pension
+spec:
+  selector:
+    matchLabels:
+      name: pension
+  template:
+    metadata:
+      labels:
+        name: pension
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/scheme: http
+        prometheus.io/port: "1080"
+    spec:
+      containers:
+        - name: pension
+          image: vibioh/montdenis
+          ports:
+            - name: http
+              containerPort: 1080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          resources:
+            requests:
+              memory: 24M
+            limits:
+              memory: 64M

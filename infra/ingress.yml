@@ -1,0 +1,36 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pension-http
+spec:
+  entryPoints:
+    - http
+  routes:
+    - match: Host(`pension.montdenis.fr`)
+      kind: Rule
+      middlewares:
+        - name: redirect
+      services:
+        - name: pension
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pension-https
+spec:
+  entryPoints:
+    - https
+  routes:
+    - match: Host(`pension.montdenis.fr`)
+      kind: Rule
+      middlewares:
+        - name: compress
+        - name: ratelimit
+      services:
+        - name: pension
+          port: 80
+  tls:
+    certResolver: default
