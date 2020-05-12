@@ -3,6 +3,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pension
+  labels:
+    app.kubernetes.io/name: pension
+    app.kubernetes.io/instance: pension
+    app.kubernetes.io/managed-by: kubectl
 spec:
   selector:
     matchLabels:
