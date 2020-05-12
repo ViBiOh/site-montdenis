@@ -3,6 +3,10 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: pension-http
+  labels:
+    app.kubernetes.io/name: pension
+    app.kubernetes.io/instance: pension
+    app.kubernetes.io/managed-by: kubectl
 spec:
   entryPoints:
     - http
@@ -20,6 +24,10 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: pension-https
+  labels:
+    app.kubernetes.io/name: pension
+    app.kubernetes.io/instance: pension
+    app.kubernetes.io/managed-by: kubectl
 spec:
   entryPoints:
     - https
