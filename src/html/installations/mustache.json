@@ -11,7 +11,8 @@
       "url": "https://pension.montdenis.fr/",
       "name": "Accueil",
       "position": 1
-    }, {
+    },
+    {
       "url": "https://pension.montdenis.fr/installations/",
       "name": "Installations",
       "position": 2
@@ -23,17 +24,20 @@
       "url": "/img/pres",
       "alt": "Vertes et spacieuses pâtures pour vos équidés",
       "class": "half"
-    }, {
+    },
+    {
       "name": "carriere",
       "url": "/img/carriere",
       "alt": "Une carrière de sable dotée d'une bordure en bois",
       "class": "half"
-    }, {
+    },
+    {
       "name": "rond_longe",
       "url": "/img/rond_longe",
       "alt": "Un rond de longe de 18m",
       "class": "half"
-    }, {
+    },
+    {
       "name": "ballade",
       "url": "/img/ballade",
       "alt": "Des chemins de ballade entourant le domaine"
