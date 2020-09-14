@@ -1,0 +1,13 @@
+---
+nameOverride: pension
+
+image:
+  repository: vibioh/montdenis
+
+config:
+  VIWS_LOGGER_JSON: "true"
+
+ingress:
+  enabled: true
+  hosts:
+    - pension.montdenis.fr
