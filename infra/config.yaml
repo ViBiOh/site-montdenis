@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -15,17 +14,13 @@ spec:
         name: vibioh
         namespace: flux-system
       interval: 120m
-
   values:
     nameOverride: pension
-
     image:
-      repository: vibioh/montdenis # {"$imagepolicy": "default:site-montdenis"}
-
+      repository: vibioh/montdenis:latest # {"$imagepolicy": "default:site-montdenis"}
     config:
       VIWS_LOGGER_JSON: "true"
-
     ingress:
       enabled: true
       hosts:
-        - pension.montdenis.fr
+      - pension.montdenis.fr
