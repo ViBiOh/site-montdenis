@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.30"
+      version: "0.0.32"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -20,7 +20,7 @@ spec:
     nameOverride: pension
 
     image:
-      repository: vibioh/montdenis
+      repository: vibioh/montdenis # {"$imagepolicy": "default:site-montdenis"}
 
     config:
       VIWS_LOGGER_JSON: "true"
