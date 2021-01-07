@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.40"
+      version: '0.0.42'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -19,8 +19,8 @@ spec:
     image:
       repository: vibioh/montdenis:latest # {"$imagepolicy": "default:site-montdenis"}
     config:
-      VIWS_LOGGER_JSON: "true"
+      VIWS_LOGGER_JSON: 'true'
     ingress:
       enabled: true
       hosts:
-      - pension.montdenis.fr
+        - pension.montdenis.fr
