@@ -23,4 +23,4 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - pension.montdenis.fr
+      - pension.montdenis.fr
