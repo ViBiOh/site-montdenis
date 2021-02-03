@@ -40,7 +40,7 @@
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-import": "2.22.1",
     "html-minifier": "4.0.0",
-    "js-index-builder": "ViBiOh/js-index-builder#master",
+    "js-index-builder": "ViBiOh/js-index-builder#main",
     "stylelint": "13.9.0",
     "stylelint-config-standard": "20.0.0",
     "uglify-es": "3.3.9"
