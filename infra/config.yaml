@@ -24,7 +24,7 @@ spec:
   values:
     nameOverride: pension
     image:
-      repository: vibioh/montdenis:202102211149 # {"$imagepolicy": "default:site-montdenis"}
+      repository: vibioh/montdenis:202102212022 # {"$imagepolicy": "default:site-montdenis"}
     config:
       VIWS_LOGGER_JSON: 'true'
     ingress:
