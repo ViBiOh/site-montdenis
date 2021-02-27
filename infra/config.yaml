@@ -24,10 +24,10 @@ spec:
   values:
     nameOverride: pension
     image:
-      repository: vibioh/montdenis:202102212022 # {"$imagepolicy": "default:flux-montdenis-web"}
+      repository: vibioh/montdenis:202102271711 # {"$imagepolicy": "default:flux-montdenis-web"}
     config:
       VIWS_LOGGER_JSON: "true"
     ingress:
       enabled: true
       hosts:
-        - pension.montdenis.fr
+      - pension.montdenis.fr
