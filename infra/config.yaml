@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.0.47'
+      version: '0.0.48'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -25,7 +25,8 @@ spec:
   values:
     nameOverride: pension
     image:
-      repository: vibioh/montdenis:202103020805 # {"$imagepolicy": "default:flux-montdenis-web"}
+      name: vibioh/montdenis
+      tag: 202103020805 # {"$imagepolicy": "default:flux-montdenis-web:tag"}
     config:
       VIWS_LOGGER_JSON: 'true'
     ingress:
