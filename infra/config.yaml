@@ -28,10 +28,11 @@ spec:
       tag: "202105300728" # {"$imagepolicy": "default:flux-montdenis-web:tag"}
     config:
       VIWS_LOGGER_JSON: "true"
+      VIWS_PROMETHEUS_GZIP: "false"
     ingress:
       enabled: true
       hosts:
-      - pension.montdenis.fr
+        - pension.montdenis.fr
     canary:
       enabled: true
       url: https://pension.montdenis.fr
