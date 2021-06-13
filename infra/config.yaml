@@ -29,10 +29,11 @@ spec:
     config:
       VIWS_LOGGER_JSON: "true"
       VIWS_PROMETHEUS_GZIP: "false"
+      VIWS_GZIP: "false"
     ingress:
       enabled: true
       hosts:
-      - pension.montdenis.fr
+        - pension.montdenis.fr
     canary:
       enabled: true
       url: https://pension.montdenis.fr
