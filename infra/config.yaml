@@ -25,7 +25,7 @@ spec:
     nameOverride: pension
     image:
       name: vibioh/montdenis
-      tag: "202106131412" # {"$imagepolicy": "default:flux-montdenis-web:tag"}
+      tag: "202106160827" # {"$imagepolicy": "default:flux-montdenis-web:tag"}
     config:
       VIWS_LOGGER_JSON: "true"
       VIWS_PROMETHEUS_GZIP: "false"
@@ -33,7 +33,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-      - pension.montdenis.fr
+        - pension.montdenis.fr
     canary:
       enabled: true
       url: https://pension.montdenis.fr
