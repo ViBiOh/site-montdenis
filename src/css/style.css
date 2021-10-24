@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css');
+@import url("https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css");
 
 :root {
   --clear: #f8f8f8;
@@ -14,7 +14,16 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Nue", sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Nue",
+    sans-serif;
 }
 
 body {
@@ -117,11 +126,11 @@ article svg {
 #mail {
   display: inline-block;
   margin: 10px 0;
-  opacity: 0.8;
+  opacity: 80%;
 }
 
 #mail:hover {
-  opacity: 1;
+  opacity: 100%;
 }
 
 @media screen and (min-width: 641px) {
@@ -135,34 +144,34 @@ article svg {
     display: none;
   }
 
-  .bgImg {
+  .bg-img {
     position: relative;
   }
 
-  .bgImg::after {
+  .bg-img::after {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     bottom: 0;
     content: "";
     left: 0;
-    opacity: 0.4;
+    opacity: 40%;
     position: absolute;
     right: 0;
     top: 0;
     z-index: -1;
   }
 
-  #toggleMenu {
+  #toggle-menu {
     display: none;
   }
 
-  #lookRight {
+  #look-right {
     transform: scale(-1, 1);
   }
 
   #contact::after {
-    background-image: url('/img/ermeste.jpg?v={{version}}');
+    background-image: url("/img/ermeste.jpg?v={{version}}");
   }
 }
 
@@ -205,7 +214,7 @@ article svg {
     width: 100%;
   }
 
-  #toggleMenu {
+  #toggle-menu {
     position: fixed;
     border: 0;
     bottom: 10px;
@@ -223,13 +232,13 @@ article svg {
 }
 
 @media screen and (min-width: 641px) {
-  .padding__desktop {
+  .padding-desktop {
     padding: 10px;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .padding__mobile {
+  .padding-mobile {
     padding: 10px;
   }
 }
