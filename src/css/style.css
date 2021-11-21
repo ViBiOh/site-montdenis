@@ -126,11 +126,11 @@ article svg {
 #mail {
   display: inline-block;
   margin: 10px 0;
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 #mail:hover {
-  opacity: 100%;
+  opacity: 1;
 }
 
 @media screen and (min-width: 641px) {
@@ -155,7 +155,7 @@ article svg {
     bottom: 0;
     content: "";
     left: 0;
-    opacity: 40%;
+    opacity: 0.4;
     position: absolute;
     right: 0;
     top: 0;
