@@ -1,15 +1,15 @@
-window.addEventListener('load', () => {
-  const toggleButton = document.getElementById('toggleMenu');
-  const navElement = document.getElementsByTagName('nav')[0];
+window.addEventListener("load", () => {
+  const toggleButton = document.getElementById("toggle-menu");
+  const navElement = document.getElementsByTagName("nav")[0];
 
   function handleNav(target) {
     const navClasses = navElement.classList;
-    if (!target || navClasses.contains('displayed')) {
-      navClasses.remove('displayed');
-      toggleButton.innerHTML = '\u2261';
+    if (!target || navClasses.contains("displayed")) {
+      navClasses.remove("displayed");
+      toggleButton.innerHTML = "\u2261";
     } else {
-      navClasses.add('displayed');
-      toggleButton.innerHTML = '\u2715';
+      navClasses.add("displayed");
+      toggleButton.innerHTML = "\u2715";
     }
   }
 
@@ -20,5 +20,6 @@ window.addEventListener('load', () => {
     handleNav(toggleButton.contains(event.target));
   }
 
-  document.addEventListener('touchstart', handleClick);
+  document.addEventListener("touchstart", handleClick);
+  document.addEventListener("click", handleClick);
 });
