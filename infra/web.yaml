@@ -33,7 +33,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-      - pension.montdenis.fr
+        - pension.montdenis.fr
     canary:
       enabled: true
       url: https://pension.montdenis.fr
