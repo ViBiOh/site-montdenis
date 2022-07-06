@@ -34,8 +34,5 @@ spec:
       enabled: true
       hosts:
         - pension.montdenis.fr
-    canary:
-      enabled: true
-      url: https://pension.montdenis.fr
     pprof:
       enabled: true
