@@ -25,7 +25,7 @@ spec:
     nameOverride: pension
     image:
       name: vibioh/montdenis
-      tag: "202208141356" # {"$imagepolicy": "default:flux-montdenis-web:tag"}
+      tag: "202208150848" # {"$imagepolicy": "default:flux-montdenis-web:tag"}
     config:
       VIWS_LOGGER_JSON: "true"
       VIWS_PROMETHEUS_GZIP: "false"
