@@ -152,13 +152,10 @@ article svg {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    bottom: 0;
     content: "";
-    left: 0;
     opacity: 0.4;
     position: absolute;
-    right: 0;
-    top: 0;
+    inset: 0;
     z-index: -1;
   }
 
